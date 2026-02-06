@@ -1,26 +1,7 @@
-import sys
+import random
 
-from char_values import Character
+from char_values import PC
 
-PC = Character()
-
-def char_level():
-    print("What level is your character?")
-    try:
-        inp = str.lower(input())
-        if inp == "exit":
-            quit()
-        inp = int(inp)
-        if inp >= 1 and inp <= 20:
-            PC.lvl = inp
-            print(f"Your character is level {PC.lvl}.")
-            return
-        else:
-            print("Please enter a number between 1 and 20.")
-            char_level()
-    except ValueError:
-        print("Please enter a number between 1 and 20.")
-        char_level()
 
 def input_scores():
     print("Do you have the Ability Scores for your character? [y/n]")
@@ -41,19 +22,9 @@ def input_scores():
             quit()
         else:
             input_scores()
+            return
     elif inp == "n" or inp == "no":
         roll_scores()
-    elif inp == "exit":
-        quit()
-
-
-def roll_scores():
-    print("Would you like to randomize your ability scores? [y/n]")
-    inp = str.lower(input())
-    if inp == "y" or inp == "yes":
-        pass
-    elif inp == "n" or inp == "no":
-        input_scores()
     elif inp == "exit":
         quit()
 
@@ -159,3 +130,56 @@ def input_cha():
     except ValueError:
         print("Please enter a number between 1 and 20.")
         input_cha()
+
+
+def roll_scores():
+    print("Would you like to randomize your ability scores? [y/n]")
+    inp = str.lower(input())
+    if inp == "y" or inp == "yes":
+        print("Which method would you like to use?\n")
+        print("[1] - 3d6\n[2] - 4d6 drop lowest\n[3] - 1d20\n[4] - 2d20 drop lowest")
+        inp = str.lower(input())
+        if inp == "1":
+            for i in range(6):
+                result = random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
+                PC.scores[i] = result
+            return
+        if inp == "2":
+            for i in range(6):
+                roll = []
+                roll.append(random.randint(1,6))
+                roll.append(random.randint(1,6))
+                roll.append(random.randint(1,6))
+                roll.append(random.randint(1,6))
+                roll.sort()
+                del roll[0]
+                result = roll[0] + roll[1] + roll[2]
+                PC.scores[i] = result
+            return
+        if inp == "3":
+            for i in range(6):
+                roll = random.randint(1,20)
+                PC.scores[i] = roll
+            return
+        if inp == "4":
+            for i in range(6):
+                roll = []
+                roll.append(random.randint(1,20))
+                roll.append(random.randint(1,20))
+                roll.sort()
+                del roll[0]
+                result = roll[0]
+                PC.scores[i] = result
+            return
+        elif inp == "exit":
+            quit()
+        else:
+            print("Please enter a number [1-4]")
+            roll_scores()
+    elif inp == "n" or inp == "no":
+        input_scores()
+        return
+    elif inp == "exit":
+        quit()
+    else:
+        roll_scores()

@@ -10,3 +10,6 @@ class Character:
         self.profs = proficiencies
         self.langs = languages
         self.spells = spells
+
+
+PC = Character()
