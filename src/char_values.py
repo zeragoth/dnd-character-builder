@@ -1,15 +1,39 @@
+class Race:
+    def __init__(self):
+        self.name = "race"
+        self.asi = {}
+        self.size = "size"
+        self.speed = 30
+        self.armor_profs = []
+        self.weapon_profs = []
+        self.tool_profs = []
+        self.skill_profs = []
+        self.traits = []
+        self.langs = []
+        self.subraces = []
+        self.spells = []
+        self.feats = []
+
+    def race_check_lvl():
+        pass
+
+
 class Character:
-    def __init__(self, lvl=1, ability_scores=[10,10,10,10,10,10], race="none", job="none", name="nameless", background="none", feats=[], proficiencies=[], languages=["Common"], spells=[]):
-        self.lvl = lvl
-        self.scores = ability_scores
-        self.race = race
-        self.job = job
-        self.name = name
-        self.bground = background
-        self.feats = feats
-        self.profs = proficiencies
-        self.langs = languages
-        self.spells = spells
+    def __init__(self):
+        self.lvl = 1
+        self.scores = [10,10,10,10,10,10]
+        self.race = Race()
+        self.job = "none"
+        self.name = "nameless"
+        self.bground = "none"
+        self.feats = []
+        self.armor_profs = []
+        self.weapon_profs = []
+        self.tool_profs = []
+        self.skill_profs = []
+        self.langs = []
+        self.spells = []
+        self.books = []
 
 
 PC = Character()
