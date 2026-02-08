@@ -5,7 +5,9 @@ class Dwarf(Race):
     def __init__(self):
         super().__init__()
         self.name = "Dwarf"
-        self.asi["CON"] = 2
+        # each asi is a tuple with (ability score index, increase amount)
+        # eg (0,2) is STR +2, (3,1) is INT +1
+        self.asi = [(2,2)]
         self.size = "Medium"
         self.speed = 25
         self.weapon_profs = ["battleaxe","handaxe","light hammer","warhammer"]
@@ -19,14 +21,14 @@ class Hill_Dwarf(Dwarf):
     def __init__(self):
         super().__init__()
         self.name = "Hill Dwarf"
-        self.asi["WIS"] = 1
+        self.asi.append((4,1))
         self.traits.append("Dwarven Toughness")
         
 class Mountain_Dwarf(Dwarf):
     def __init__(self):
         super().__init__()
         self.name = "Mountain Dwarf"
-        self.asi["STR"] = 1
+        self.asi.append((0,1))
         self.armor_profs = ["light armor","medium armor"]
 
 
@@ -35,7 +37,7 @@ class Elf(Race):
     def __init__(self):
         super().__init__()
         self.name = "Elf"
-        self.asi["DEX"] = 2
+        self.asi = [(1,2)]
         self.size = "Medium"
         self.speed = 30
         self.traits = ["Darkvision","Fey Ancestry","Trance"]
@@ -47,7 +49,7 @@ class High_Elf(Elf):
     def __init__(self):
         super().__init__()
         self.name = "High Elf"
-        self.asi["INT"] = 1
+        self.asi.append(3,1)
         self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
         self.spells = ["CHOICE"]
         self.langs.append("CHOICE")
@@ -56,7 +58,7 @@ class Wood_Elf(Elf):
     def __init__(self):
         super().__init__()
         self.name = "Wood Elf"
-        self.asi["WIS"] = 1
+        self.asi.append(4,1)
         self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
         self.speed = 35
         self.traits.append("Mask of the Wild")
@@ -65,7 +67,7 @@ class Drow(Elf):
     def __init__(self):
         super().__init__()
         self.name = "Drow"
-        self.asi["CHA"] = 1
+        self.asi.append(5,1)
         self.traits.append("Sunlight Sensitivity")
         self.spells = ["Dancing Lights"]
         self.weapon_profs = ["rapier","shortsword","hand crossbow"]
@@ -82,7 +84,7 @@ class Halfling(Race):
     def __init__(self):
         super().__init__()
         self.name = "Halfling"
-        self.asi["DEX"] = 2
+        self.asi = [(1,2)]
         self.size = "Small"
         self.speed = 25
         self.traits = ["Lucky","Brave","Halfling Nimbleness"]
@@ -93,14 +95,14 @@ class Lightfoot_Halfling(Halfling):
     def __init__(self):
         super().__init__()
         self.name = "Lightfoot Halfling"
-        self.asi["CHA"] = 1
+        self.asi.append(5,1)
         self.traits.append("Naturally Stealthy")
 
 class Stout_Halfling(Halfling):
     def __init__(self):
         super().__init__()
         self.name = "Stout Halfling"
-        self.asi["CON"] = 1
+        self.asi.append(2,1)
         self.traits.append("Stout Resilience")
 
 
@@ -109,12 +111,7 @@ class Human(Race):
     def __init__(self):
         super().__init__()
         self.name = "Human"
-        self.asi["STR"] = 1
-        self.asi["DEX"] = 1
-        self.asi["CON"] = 1
-        self.asi["INT"] = 1
-        self.asi["WIS"] = 1
-        self.asi["CHA"] = 1
+        self.asi = [(0,1),(1,1),(2,1),(3,1),(4,1),(5,1)]
         self.size = "Medium"
         self.speed = 30
         self.langs = ["Common","CHOICE"]
@@ -123,8 +120,7 @@ class Human_Variant(Race):
     def __init__(self):
         super().__init__()
         self.name = "Human (Variant)"
-        self.asi["CHOICE1"] = 1
-        self.asi["CHOICE2"] = 1
+        self.asi = [("CHOICE",1),("CHOICE",2)]
         self.size = "Medium"
         self.speed = 30
         self.langs = ["Common","CHOICE"]
@@ -137,8 +133,7 @@ class Dragonborn(Race):
     def __init__(self):
         super().__init__()
         self.name = "Dragonborn"
-        self.asi["STR"] = 2
-        self.asi["CHA"] = 1
+        self.asi = [(0,2),(5,1)]
         self.size = "Medium"
         self.speed = 30
         self.traits = ["Draconic Ancestry","Breath Weapon","Damage Resistance"]
@@ -150,7 +145,7 @@ class Gnome(Race):
     def __init__(self):
         super().__init__()
         self.name = "Gnome"
-        self.asi["INT"] = 2
+        self.asi = [(3,2)]
         self.size = "Small"
         self.speed = 25
         self.traits = ["Darkvision","Gnome Cunning"]
@@ -161,7 +156,7 @@ class Forest_Gnome(Gnome):
     def __init__(self):
         super().__init__()
         self.name = "Forest Gnome"
-        self.asi["DEX"] = 1
+        self.asi.append(1,1)
         self.spells = ["Minor Illusion"]
         self.traits.append("Speak with Small Beasts")
 
@@ -169,7 +164,7 @@ class Rock_Gnome(Gnome):
     def __init__(self):
         super().__init__()
         self.name = "Rock Gnome"
-        self.asi["CON"] = 1
+        self.asi.append(2,1)
         self.traits.extend(["Artificer's Lore","Tinker"])
 
 
@@ -178,9 +173,7 @@ class Half_Elf(Race):
     def __init__(self):
         super().__init__()
         self.name = "Half-Elf"
-        self.asi["CHA"] = 2
-        self.asi["CHOICE1"] = 1
-        self.asi["CHOICE2"] = 1
+        self.asi = [(5,2),("CHOICE",1),("CHOICE",1)]
         self.size = "Medium"
         self.speed = 30
         self.traits = ["Darkvision","Fey Ancestry"]
@@ -193,8 +186,7 @@ class Half_Orc(Race):
     def __init__(self):
         super().__init__()
         self.name = "Half-Orc"
-        self.asi["STR"] = 2
-        self.asi["CON"] = 1
+        self.asi = [(0,2),(2,1)]
         self.size = "Medium"
         self.speed = 30
         self.traits = ["Darkvision","Relentless Endurance","Savage Attacks"]
@@ -207,8 +199,7 @@ class Tiefling(Race):
     def __init__(self):
         super().__init__()
         self.name = "Tiefling"
-        self.asi["INT"] = 1
-        self.asi["CHA"] = 2
+        self.asi = [(3,1),(5,2)]
         self.size = "Medium"
         self.speed = 30
         self.traits = ["Darkvision","Hellish Resistance"]

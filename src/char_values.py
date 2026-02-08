@@ -1,7 +1,7 @@
 class Race:
     def __init__(self):
         self.name = "race"
-        self.asi = {}
+        self.asi = []
         self.size = "size"
         self.speed = 30
         self.armor_profs = []
