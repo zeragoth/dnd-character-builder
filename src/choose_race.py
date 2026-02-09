@@ -1,4 +1,4 @@
-from char_values import PC
+from char_values import PC, Race
 from source_books import choose_books
 
 
@@ -21,6 +21,11 @@ def choose_race():
         inp = str.lower(input())
         if inp == "exit":
             quit()
+        
+        # Implement a procedure for removing old racial features here
+        if PC.race.name != "race":
+            pass
+
         for race in reversed(available_races):
             if str.lower(race.name) in inp:
                 if len(race.subraces) > 0:
@@ -34,71 +39,75 @@ def choose_race():
                         for sub in race.subraces:
                             if str.lower(sub().name) in inp:
                                 PC.race = sub()
-                                for i in range(len(sub().asi)):
-                                    if sub().asi[i][0] != "CHOICE":
-                                        PC.scores[sub().asi[i][0]] += sub().asi[i][1]
-                                    else:
-                                         picked = False
-                                         while picked == False:
-                                            print(f"Choose an ability score to increase by {sub().asi[i][1]}.")
-                                            print("[1] - Strength\n[2] - Dexterity\n[3] - Constitution\n[4] - Intelligence\n[5] - Wisdom\n[6] - Charisma")
-                                            inp = str.lower(input())
-                                            if inp == "exit":
-                                               quit()
-                                            if "1" in inp:
-                                                PC.scores[0] += sub().asi[i][1]
-                                                picked = True
-                                            elif "2" in inp:
-                                                PC.scores[1] += sub().asi[i][1]
-                                                picked = True
-                                            elif "3" in inp:
-                                                PC.scores[2] += sub().asi[i][1]
-                                                picked = True
-                                            elif "4" in inp:
-                                                PC.scores[3] += sub().asi[i][1]
-                                                picked = True
-                                            elif "5" in inp:
-                                                PC.scores[4] += sub().asi[i][1]
-                                                picked = True
-                                            elif "6" in inp:
-                                                PC.scores[5] += sub().asi[i][1]
-                                                picked = True
-                                            else:
-                                                print(f"{inp} is not a valid choice.")
+                                apply_race_asi(sub())
+
+                                # add other racial traits here
+
                                 return
                         print(f"\n{inp} is not a valid subrace name.")
                 else:
                     PC.race = race
-                    for i in range(len(race.asi)):
-                        if race.asi[i][0] != "CHOICE":
-                            PC.scores[race.asi[i][0]] += race.asi[i][1]
-                        else:
-                            picked = False
-                            while picked == False:
-                                print(f"Choose an ability score to increase by {race.asi[i][1]}.")
-                                print("[1] - Strength\n[2] - Dexterity\n[3] - Constitution\n[4] - Intelligence\n[5] - Wisdom\n[6] - Charisma")
-                                inp = str.lower(input())
-                                if inp == "exit":
-                                   quit()
-                                if "1" in inp:
-                                    PC.scores[0] += race.asi[i][1]
-                                    picked = True
-                                elif "2" in inp:
-                                    PC.scores[1] += race.asi[i][1]
-                                    picked = True
-                                elif "3" in inp:
-                                    PC.scores[2] += race.asi[i][1]
-                                    picked = True
-                                elif "4" in inp:
-                                    PC.scores[3] += race.asi[i][1]
-                                    picked = True
-                                elif "5" in inp:
-                                    PC.scores[4] += race.asi[i][1]
-                                    picked = True
-                                elif "6" in inp:
-                                    PC.scores[5] += race.asi[i][1]
-                                    picked = True
-                                else:
-                                    print(f"{inp} is not a valid choice.")
+                    apply_race_asi(race)
+
+                    # add other racial traits here
+
                     return
         print(f"\n{inp} is not a valid race name.")
+
+
+
+def apply_race_asi(race):
+    score_list = [[0, "Strength"],[1, "Dexterity"],[2, "Constitution"],
+                [3, "Intelligence"],[4, "Wisdom"],[5, "Charisma"]]
+    if race.name == "Half-Elf":
+        del score_list[5]
+    
+    for i in range(len(race.asi)):
+        if race.asi[i][0] != "CHOICE":
+            PC.scores[race.asi[i][0]] += race.asi[i][1]
+        else:
+            picked = False
+            while picked == False:
+                print(f"Choose an ability score to increase by {race.asi[i][1]}.")
+                for j in range(len(score_list)):
+                    print(f"[{j+1}] - {score_list[j][1]}")
+
+                inp = str.lower(input())
+                if inp == "exit":
+                   quit()
+                if len(score_list) <= 0:
+                    print("Error: No available ability scores!")
+
+                x = None
+                if "1" in inp and len(score_list) >= 1:
+                    x = score_list[0][0]
+                    PC.scores[x] += race.asi[i][1]
+                    del score_list[0]
+                    picked = True
+                elif "2" in inp and len(score_list) >= 2:
+                    x = score_list[1][0]
+                    PC.scores[x] += race.asi[i][1]
+                    del score_list[1]
+                    picked = True
+                elif "3" in inp and len(score_list) >= 3:
+                    x = score_list[2][0]
+                    PC.scores[x] += race.asi[i][1]
+                    del score_list[2]
+                    picked = True
+                elif "4" in inp and len(score_list) >= 4:
+                    x = score_list[3][0]
+                    PC.scores[x] += race.asi[i][1]
+                    del score_list[3]
+                    picked = True
+                elif "5" in inp and len(score_list) >= 5:
+                    x = score_list[4][0]
+                    PC.scores[x] += race.asi[i][1]
+                    del score_list[4]
+                    picked = True
+                elif "6" in inp and len(score_list) >= 6:
+                    x = score_list[5][0]
+                    PC.scores[x] += race.asi[i][1]
+                    del score_list[5]
+                    picked = True
+                else:
+                    print(f"{inp} is not a valid choice.")

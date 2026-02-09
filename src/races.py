@@ -49,7 +49,7 @@ class High_Elf(Elf):
     def __init__(self):
         super().__init__()
         self.name = "High Elf"
-        self.asi.append(3,1)
+        self.asi.append((3,1))
         self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
         self.spells = ["CHOICE"]
         self.langs.append("CHOICE")
@@ -58,7 +58,7 @@ class Wood_Elf(Elf):
     def __init__(self):
         super().__init__()
         self.name = "Wood Elf"
-        self.asi.append(4,1)
+        self.asi.append((4,1))
         self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
         self.speed = 35
         self.traits.append("Mask of the Wild")
@@ -67,7 +67,7 @@ class Drow(Elf):
     def __init__(self):
         super().__init__()
         self.name = "Drow"
-        self.asi.append(5,1)
+        self.asi.append((5,1))
         self.traits.append("Sunlight Sensitivity")
         self.spells = ["Dancing Lights"]
         self.weapon_profs = ["rapier","shortsword","hand crossbow"]
@@ -95,14 +95,14 @@ class Lightfoot_Halfling(Halfling):
     def __init__(self):
         super().__init__()
         self.name = "Lightfoot Halfling"
-        self.asi.append(5,1)
+        self.asi.append((5,1))
         self.traits.append("Naturally Stealthy")
 
 class Stout_Halfling(Halfling):
     def __init__(self):
         super().__init__()
         self.name = "Stout Halfling"
-        self.asi.append(2,1)
+        self.asi.append((2,1))
         self.traits.append("Stout Resilience")
 
 
@@ -120,7 +120,7 @@ class Human_Variant(Race):
     def __init__(self):
         super().__init__()
         self.name = "Human (Variant)"
-        self.asi = [("CHOICE",1),("CHOICE",2)]
+        self.asi = [("CHOICE",1),("CHOICE",1)]
         self.size = "Medium"
         self.speed = 30
         self.langs = ["Common","CHOICE"]
@@ -156,7 +156,7 @@ class Forest_Gnome(Gnome):
     def __init__(self):
         super().__init__()
         self.name = "Forest Gnome"
-        self.asi.append(1,1)
+        self.asi.append((1,1))
         self.spells = ["Minor Illusion"]
         self.traits.append("Speak with Small Beasts")
 
@@ -164,7 +164,7 @@ class Rock_Gnome(Gnome):
     def __init__(self):
         super().__init__()
         self.name = "Rock Gnome"
-        self.asi.append(2,1)
+        self.asi.append((2,1))
         self.traits.extend(["Artificer's Lore","Tinker"])
 
 
