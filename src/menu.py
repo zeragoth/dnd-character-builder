@@ -9,7 +9,7 @@ def menu():
     while True:
         print(f"\nName: {PC.name} ----- Class & Level: {PC.job} {PC.lvl}")
         print(f"Race: {PC.race.name} ----- Background: {PC.bground}")
-        print(f"STR {PC.scores[0]}\nDEX {PC.scores[1]}\nCON {PC.scores[2]}\nINT {PC.scores[3]}\nWIS {PC.scores[4]}\nCHA {PC.scores[5]}")
+        print(f"STR {PC.scores[0]+PC.racial_scores[0]}\nDEX {PC.scores[1]+PC.racial_scores[1]}\nCON {PC.scores[2]+PC.racial_scores[2]}\nINT {PC.scores[3]+PC.racial_scores[3]}\nWIS {PC.scores[4]+PC.racial_scores[4]}\nCHA {PC.scores[5]+PC.racial_scores[5]}")
         print(f"Proficiencies: {PC.armor_profs}\n{PC.weapon_profs}\n{PC.tool_profs}\n{PC.skill_profs} ----- Languages: {PC.langs}")
         print(f"Feats: {PC.feats} ----- Spells: {PC.spells}")
         print(f"Source Books: {get_book_titles()}")

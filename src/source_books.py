@@ -1,4 +1,5 @@
-from races import Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling
+from races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, 
+                   Tiefling)
 from jobs import Barbarian
 from char_values import PC
 
