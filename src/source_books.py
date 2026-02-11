@@ -1,5 +1,6 @@
-from races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, 
-                   Tiefling)
+from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
+                   Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome)
+
 from jobs import Barbarian
 from char_values import PC
 
@@ -42,6 +43,7 @@ class Source_Book:
         super().__init__()
         self.title = "none"
         self.races = []
+        self.subraces = []
         self.jobs = []
         self.feats = []
         self.spells = []
@@ -52,6 +54,7 @@ class Player_Handbook(Source_Book):
         super().__init__()
         self.title = "Player's Handbook"
         self.races = [Dwarf(), Elf(), Halfling(), Human(), Human_Variant(), Dragonborn(), Gnome(), Half_Elf(), Half_Orc(), Tiefling()]
+        self.subraces = []
         self.jobs = [Barbarian()]
 
 class Sword_Coast_Adventurer_Guide(Source_Book):
