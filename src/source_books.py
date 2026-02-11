@@ -1,6 +1,6 @@
 from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
                    Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome)
-
+from races.scag_races import (Duergar, Svirfneblin, Half_Elf_Variant, Tiefling_Variant)
 from jobs import Barbarian
 from char_values import PC
 
@@ -28,6 +28,7 @@ def choose_books():
         PC.books.append(FToD)
     if "8" in inp:
         PC.books.append(GotG)
+    apply_subraces(PC.books)
     return
 
 def get_book_titles():
@@ -36,11 +37,17 @@ def get_book_titles():
         book_titles.append(PC.books[i].title)
     return book_titles
 
+def apply_subraces(books):
+    for book in books:
+        for subrace in book.subraces:
+            if subrace.parent not in book.races:
+                book.races.append(subrace.parent)
+            if subrace not in subrace.parent.subraces:
+                subrace.parent.subraces.append(subrace)
 
 
 class Source_Book:
     def __init__(self):
-        super().__init__()
         self.title = "none"
         self.races = []
         self.subraces = []
@@ -49,54 +56,57 @@ class Source_Book:
         self.spells = []
         self.bgrounds = []
 
-class Player_Handbook(Source_Book):
+class PHB(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Player's Handbook"
-        self.races = [Dwarf(), Elf(), Halfling(), Human(), Human_Variant(), Dragonborn(), Gnome(), Half_Elf(), Half_Orc(), Tiefling()]
-        self.subraces = []
-        self.jobs = [Barbarian()]
+        self.races = [Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling]
+        self.subraces = [Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome]
+        self.jobs = [Barbarian]
 
-class Sword_Coast_Adventurer_Guide(Source_Book):
+class SCAG(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Sword Coast Adventurer's Guide"
+        self.races = [Half_Elf_Variant, Tiefling_Variant]
+        self.subraces = [Duergar, Svirfneblin]
+        self.jobs = []
 
-class Elemental_Evil_Player_Companion(Source_Book):
+class EE(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Elemental Evil Player's Companion"
 
-class Revised_Ranger(Source_Book):
+class RR(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Revised Ranger"
 
-class Xanathar_Guide_to_Everything(Source_Book):
+class XGtE(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Xanathar's Guide to Everything"
 
-class Tasha_Cauldron_of_Everything(Source_Book):
+class TCoE(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Tasha's Cauldron of Everything"
 
-class Fizban_Treasury_of_Dragons(Source_Book):
+class FToD(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Fizban's Treasury of Dragons"
 
-class Glory_of_the_Giants(Source_Book):
+class GotG(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Bigby Presents: Glory of the Giants"
 
-PHB = Player_Handbook()
-SCAG = Sword_Coast_Adventurer_Guide()
-EE = Elemental_Evil_Player_Companion()
-RR = Revised_Ranger()
-XGtE = Xanathar_Guide_to_Everything()
-TCoE = Tasha_Cauldron_of_Everything()
-FToD = Fizban_Treasury_of_Dragons()
-GotG = Glory_of_the_Giants()
+PHB = PHB()
+SCAG = SCAG()
+EE = EE()
+RR = RR()
+XGtE = XGtE()
+TCoE = TCoE()
+FToD = FToD()
+GotG = GotG()

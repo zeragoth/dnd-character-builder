@@ -27,30 +27,29 @@ def choose_race():
                     while True:
                         print(f"Which type of {race.name}?")
                         for sub in race.subraces:
-                            print(f"- {sub().name}")
+                            print(f"- {sub.name}")
 
                         inp = str.lower(input())
                         if inp == "exit":
                             quit()
 
                         for sub in race.subraces:
-                            if str.lower(sub().name) in inp:
-                                PC.race = sub()
-                                apply_race_asi(sub())
-
-                                # add other racial traits here
-
+                            if str.lower(sub.name) in inp:
+                                PC.race = sub
+                                apply_race(sub)
                                 return
                         print(f"\n{inp} is not a valid subrace name.")
                 else:
                     PC.race = race
-                    apply_race_asi(race)
-
-                    # add other racial traits here
-
+                    apply_race(race)
                     return
         print(f"\n{inp} is not a valid race name.")
 
+
+def apply_race(race):
+    apply_race_asi(race)
+    race.choices()
+    race.check_lvl()
 
 
 def apply_race_asi(race):
