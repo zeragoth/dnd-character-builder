@@ -1,26 +1,27 @@
 class Race:
     def __init__(self):
-        pass
-    name = "race"
-    asi = []
-    size = "size"
-    speed = "30"
-    armor_profs = []
-    weapon_profs = []
-    tool_profs = []
-    skill_profs = []
-    traits = []
-    langs = []
-    parent = None
-    subraces = []
-    spells = []
-    feats = []
+        self.name = "race"
+        self.asi = []
+        self.size = "size"
+        self.speed = "30"
+        self.armor_profs = []
+        self.weapon_profs = []
+        self.tool_profs = []
+        self.skill_profs = []
+        self.traits = []
+        self.langs = []
+        self.parent = None
+        self.subraces = []
+        self.spells = []
+        self.feats = []
 
-    def check_lvl():
+    def check_lvl(self):
         pass
 
-    def choices():
+    def choices(self):
         pass
+
+
 
 PCRace = Race()
 

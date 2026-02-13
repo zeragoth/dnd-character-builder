@@ -1,4 +1,5 @@
 from char_values import PC
+import char_values
 from source_books import choose_books
 
 
@@ -7,8 +8,14 @@ def choose_race():
         choose_books()
 
     available_races = []
+
     for book in PC.books:
-        available_races.extend(book.races)
+        for race in book.races:
+            for arace in available_races:
+                if race.name == arace.name:
+                    break
+            else:
+                available_races.append(race)
     if len(available_races) <= 0:
         return
 
@@ -35,13 +42,15 @@ def choose_race():
 
                         for sub in race.subraces:
                             if str.lower(sub.name) in inp:
-                                PC.race = sub
-                                apply_race(sub)
+                                char_values.PCRace = sub
+                                PC.race = char_values.PCRace
+                                apply_race(char_values.PCRace)
                                 return
                         print(f"\n{inp} is not a valid subrace name.")
                 else:
-                    PC.race = race
-                    apply_race(race)
+                    char_values.PCRace = race
+                    PC.race = char_values.PCRace
+                    apply_race(char_values.PCRace)
                     return
         print(f"\n{inp} is not a valid race name.")
 

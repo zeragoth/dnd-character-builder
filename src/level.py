@@ -1,4 +1,4 @@
-from char_values import PC
+from char_values import PC, PCRace
 
 
 def input_level():
@@ -10,6 +10,7 @@ def input_level():
         inp = int(inp)
         if inp >= 1 and inp <= 20:
             PC.lvl = inp
+            PCRace.check_lvl()
             print(f"Your character is level {PC.lvl}.")
             return
         else:
