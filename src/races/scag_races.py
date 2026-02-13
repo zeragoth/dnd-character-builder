@@ -3,15 +3,14 @@ from races.phb_races import Dwarf, Gnome, Half_Elf, Tiefling
 
 
 class Duergar(Dwarf):
-    parent = Dwarf
-    name = "Duergar"
-    asi = parent.asi.copy()
-    asi.append((0,1))
-    traits = parent.traits.copy()
-    traits[0] = "Superior Darkvision"
-    langs = parent.langs.copy()
-    langs.append("Undercommon")
-    traits.extend(["Duergar Resilience","Sunlight Sensitivity"])
+    def __init__(self):
+        super().__init__()
+        self.parent = Dwarf()
+        self.name = "Duergar"
+        self.asi.append((0,1))
+        self.traits[0] = "Superior Darkvision"
+        self.langs.append("Undercommon")
+        self.traits.extend(["Duergar Resilience","Sunlight Sensitivity"])
 
     def check_lvl(self):
         if PC.lvl >= 3:
@@ -20,21 +19,21 @@ class Duergar(Dwarf):
             self.spells.append("Invisibility*")
 
 class Svirfneblin(Gnome):
-    parent = Gnome
-    name = "Deep Gnome"
-    asi = parent.asi.copy()
-    asi.append((1,1))
-    traits = parent.traits.copy()
-    traits[0] = "Superior Darkvision"
-    traits.append("Stone Camouflage")
-    langs = parent.langs.copy()
-    langs.append("Undercommon")
+    def __init__(self):
+        super().__init__()
+        self.parent = Gnome()
+        self.name = "Deep Gnome"
+        self.asi.append((1,1))
+        self.traits[0] = "Superior Darkvision"
+        self.traits.append("Stone Camouflage")
+        self.langs.append("Undercommon")
 
 
 class Half_Elf_Variant(Half_Elf):
-    name = "Half-elf (Variant)"
-    skill_profs = []
-    drow_magic = False
+    def __init__(self):
+        super().__init__()
+        self.name = "Half-elf (Variant)"
+        self.drow_magic = False
 
     def choices(self):
         print("Choose a trait.")
@@ -75,12 +74,14 @@ class Half_Elf_Variant(Half_Elf):
  
 
 class Tiefling_Variant(Tiefling):
-    name = "Tiefling (Variant)"
-    asi = [(1,2),(3,1)]
-    devil_tongue = False
-    hellfire = False
-    winged = False
-    infernal = False
+    def __init__(self):
+        super().__init__()
+        self.name = "Tiefling (Variant)"
+        self.asi = [(1,2),(3,1)]
+        self.devil_tongue = False
+        self.hellfire = False
+        self.winged = False
+        self.infernal = False
 
     def choices(self):
         print("Choose a trait.")
@@ -94,6 +95,7 @@ class Tiefling_Variant(Tiefling):
             self.hellfire = True
         elif "3" in inp:
             self.speed += ", Fly 30"
+            self.winged = True
         elif "4" in inp:
             self.infernal = True
         else:

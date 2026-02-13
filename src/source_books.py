@@ -28,6 +28,8 @@ def choose_books():
         PC.books.append(FToD)
     if "8" in inp:
         PC.books.append(GotG)
+
+    print(f"Books selected: {get_book_titles()}")
     apply_subraces(PC.books)
     return
 
@@ -40,10 +42,12 @@ def get_book_titles():
 def apply_subraces(books):
     for book in books:
         for subrace in book.subraces:
-            if subrace.parent not in book.races:
-                book.races.append(subrace.parent)
-            if subrace not in subrace.parent.subraces:
-                subrace.parent.subraces.append(subrace)
+            for other_book in books:
+                for race in other_book.races:
+                    if subrace.parent.name == race.name:
+                        if subrace not in race.subraces:
+                            race.subraces.append(subrace)
+
 
 
 class Source_Book:
@@ -60,16 +64,16 @@ class PHB(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Player's Handbook"
-        self.races = [Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling]
-        self.subraces = [Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome]
-        self.jobs = [Barbarian]
+        self.races = [Dwarf(), Elf(), Halfling(), Human(), Human_Variant(), Dragonborn(), Gnome(), Half_Elf(), Half_Orc(), Tiefling()]
+        self.subraces = [Hill_Dwarf(), Mountain_Dwarf(), High_Elf(), Wood_Elf(), Drow(), Lightfoot_Halfling(), Stout_Halfling(), Forest_Gnome(), Rock_Gnome()]
+        self.jobs = [Barbarian()]
 
 class SCAG(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Sword Coast Adventurer's Guide"
-        self.races = [Half_Elf_Variant, Tiefling_Variant]
-        self.subraces = [Duergar, Svirfneblin]
+        self.races = [Dwarf(), Gnome(), Half_Elf_Variant(), Tiefling_Variant()]
+        self.subraces = [Duergar(), Svirfneblin()]
         self.jobs = []
 
 class EE(Source_Book):
