@@ -3,7 +3,9 @@ class Race:
         self.name = "race"
         self.asi = []
         self.size = "size"
-        self.speed = "30"
+        self.speed = {"walk": 30,
+                      "swim": 0,
+                      "fly": 0}
         self.armor_profs = []
         self.weapon_profs = []
         self.tool_profs = []

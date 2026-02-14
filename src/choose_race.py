@@ -20,9 +20,9 @@ def choose_race():
         return
 
     while True:
-        print('Choose a race for your character. [ie "elf" to choose Elf]')
-        for race in available_races:
-            print(f"- {race.name}")
+        print('Choose a race for your character.')
+        for i in range(len(available_races)):
+            print(f"[{i+1}] - {available_races[i].name}")
 
         inp = str.lower(input())
         if inp == "exit":
@@ -33,8 +33,8 @@ def choose_race():
                 if len(race.subraces) > 0:
                     while True:
                         print(f"Which type of {race.name}?")
-                        for sub in race.subraces:
-                            print(f"- {sub.name}")
+                        for i in range(len(race.subraces)):
+                            print(f"[{i+1}] - {race.subraces[i].name}")
 
                         inp = str.lower(input())
                         if inp == "exit":
@@ -46,12 +46,44 @@ def choose_race():
                                 PC.race = char_values.PCRace
                                 apply_race(char_values.PCRace)
                                 return
+                            
+                        for i in range(len(race.subraces)):
+                            if str(i+1) in inp:
+                                char_values.PCRace = race.subraces[i]
+                                PC.race = char_values.PCRace
+                                apply_race(char_values.PCRace)
+                                return
                         print(f"\n{inp} is not a valid subrace name.")
                 else:
                     char_values.PCRace = race
                     PC.race = char_values.PCRace
                     apply_race(char_values.PCRace)
                     return
+                
+        if inp.isdigit() and 1 <= int(inp) <= len(available_races):
+            race = available_races[int(inp)-1]
+            if len(race.subraces) > 0:
+                while True:
+                    print(f"Which type of {race.name}?")
+                    for i in range(len(race.subraces)):
+                        print(f"[{i+1}] - {race.subraces[i].name}")
+
+                    inp = str.lower(input())
+                    if inp == "exit":
+                        quit()
+
+                    for i in range(len(race.subraces)):
+                        if str(i+1) in inp:
+                            char_values.PCRace = race.subraces[i]
+                            PC.race = char_values.PCRace
+                            apply_race(char_values.PCRace)
+                            return
+                    print(f"\n{inp} is not a valid subrace name.")
+            else:
+                char_values.PCRace = race
+                PC.race = char_values.PCRace
+                apply_race(char_values.PCRace)
+                return
         print(f"\n{inp} is not a valid race name.")
 
 

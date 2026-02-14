@@ -1,6 +1,8 @@
 from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
                    Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome)
-from races.scag_races import (Duergar, Svirfneblin, Half_Elf_Variant, Tiefling_Variant)
+from races.scag_races import Duergar, Svirfneblin, Half_Elf_Variant, Tiefling_Variant
+from races.ee_races import (Aarakocra, Genasi, Goliath,
+                            Air_Genasi, Earth_Genasi, Fire_Genasi, Water_Genasi)
 from jobs import Barbarian
 from char_values import PC
 
@@ -45,7 +47,7 @@ def apply_subraces(books):
             for other_book in books:
                 for race in other_book.races:
                     if subrace.parent.name == race.name:
-                        if subrace not in race.subraces:
+                        if not any(s.name == subrace.name for s in race.subraces):
                             race.subraces.append(subrace)
 
 
@@ -80,6 +82,8 @@ class EE(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Elemental Evil Player's Companion"
+        self.races = [Aarakocra(), Genasi(), Goliath()]
+        self.subraces = [Svirfneblin(), Air_Genasi(), Earth_Genasi(), Fire_Genasi(), Water_Genasi()]
 
 class RR(Source_Book):
     def __init__(self):

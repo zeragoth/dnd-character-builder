@@ -41,29 +41,38 @@ class Half_Elf_Variant(Half_Elf):
         "[3] - Fleet of Foot\n[4] - Mask of the Wild\n--Moon/Sun Elf Descent--\n"
         "[5] - Elf Weapon Training (High Elf)\n[6] - Cantrip\n--Drow Descent--\n"
         "[7] - Drow Magic\n--Aquatic Descent--\n[8] - 30 feet swimming speed")
-        inp = str.lower(input())
-        if inp == "exit":
-            quit()
-        elif "1" in inp:
-            self.skill_profs = ["Perception"]
-        elif "2" in inp:
-            self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
-        elif "3" in inp:
-            self.speed = "35"
-        elif "4" in inp:
-            self.traits.append("Mask of the Wild")
-        elif "5" in inp:
-            self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
-        elif "6" in inp:
-            self.spells = ["CHOICE"]
-        elif "7" in inp:
-            self.drow_magic = True
-        elif "8" in inp:
-            self.speed += ", Swim 30"
-        else:
-            print(f"{inp} is not a valid input.")
-            self.choices()
-        return
+        while True:
+            inp = str.lower(input())
+            if inp == "exit":
+                quit()
+            elif "1" in inp:
+                self.skill_profs = ["Perception"]
+            elif "2" in inp:
+                self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
+            elif "3" in inp:
+                self.speed["walk"] = 35
+            elif "4" in inp:
+                self.traits.append("Mask of the Wild")
+            elif "5" in inp:
+                self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
+            elif "6" in inp:
+                while True:
+                    print("Choose a cantrip from the Wizard spell list.")
+                    inp = input()
+                    if str.lower(inp) == "exit":
+                        quit()
+                    if inp not in self.spells and inp not in PC.spells:
+                        self.spells.append(inp)
+                        break
+                    else:
+                        print(f"{inp} is not a valid cantrip name or is already known by your character.")
+            elif "7" in inp:
+                self.drow_magic = True
+            elif "8" in inp:
+                self.speed["swim"] = 30
+            else:
+                print(f"{inp} is not a valid input.")
+            return
 
     def check_lvl(self):
         if self.drow_magic == True:
@@ -94,7 +103,7 @@ class Tiefling_Variant(Tiefling):
         elif "2" in inp:
             self.hellfire = True
         elif "3" in inp:
-            self.speed += ", Fly 30"
+            self.speed["fly"] = 30
             self.winged = True
         elif "4" in inp:
             self.infernal = True
