@@ -1,6 +1,6 @@
 from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
                    Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome)
-from races.scag_races import Duergar, Svirfneblin, Half_Elf_Variant, Tiefling_Variant
+from races.scag_races import Duergar, Ghostwise_Halfling, Half_Elf_Variant, Svirfneblin, Tiefling_Variant
 from races.ee_races import (Aarakocra, Genasi, Goliath,
                             Air_Genasi, Earth_Genasi, Fire_Genasi, Water_Genasi)
 from jobs import Barbarian
@@ -8,32 +8,29 @@ from char_values import PC
 
 
 def choose_books():
-    print('Which source books do you have available? [Choose all that apply, eg "1, 5, 6" if you want to pick the PHB, XGtE and TCoE]')
-    print(f"[1] - {PHB.title}\n[2] - {SCAG.title}\n[3] - {EE.title}\n[4] - {RR.title}\n[5] - {XGtE.title}\n[6] - {TCoE.title}\n[7] - {FToD.title}\n[8] - {GotG.title}")
-    
     PC.books = []
+    booklist = [PHB, SCAG, EE, VGtM, MToF, XGtE, TCoE, FToD, GotG, Eberron, Ravnica, Theros, Strixhaven, Wildemount, RR]
 
-    inp = str.lower(input())
-    if "1" in inp:
-        PC.books.append(PHB)
-    if "2" in inp:
-        PC.books.append(SCAG)
-    if "3" in inp:
-        PC.books.append(EE)
-    if "4" in inp:
-        PC.books.append(RR)
-    if "5" in inp:
-        PC.books.append(XGtE)
-    if "6" in inp:
-        PC.books.append(TCoE)
-    if "7" in inp:
-        PC.books.append(FToD)
-    if "8" in inp:
-        PC.books.append(GotG)
+    print(f'Which source books do you have available? [Choose all that apply, eg "1, 6, 7" if you want to pick the PHB, XGtE and TCoE]')
+    for book in booklist:
+        print(f"[{booklist.index(book)+1}] - {book.title}")
+    while True:
+        inp = str.lower(input())
+        if inp == "exit":
+            quit()
 
-    print(f"Books selected: {get_book_titles()}")
-    apply_subraces(PC.books)
-    return
+        inp = list(map(str.strip, inp.split(",")))
+        
+        for i in range(len(booklist)):
+            if str(i+1) in inp:
+                if booklist[i] not in PC.books:
+                    PC.books.append(booklist[i])
+        if len(PC.books) <= 0:
+            print("Please select at least one book.")
+        else:
+            print(f"Books selected: {get_book_titles()}")
+            apply_subraces(PC.books)
+            return
 
 def get_book_titles():
     book_titles = []
@@ -74,9 +71,8 @@ class SCAG(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Sword Coast Adventurer's Guide"
-        self.races = [Dwarf(), Gnome(), Half_Elf_Variant(), Tiefling_Variant()]
-        self.subraces = [Duergar(), Svirfneblin()]
-        self.jobs = []
+        self.races = [Dwarf(), Halfling(), Half_Elf_Variant(), Gnome(), Tiefling_Variant()]
+        self.subraces = [Duergar(), Ghostwise_Halfling(), Svirfneblin()]
 
 class EE(Source_Book):
     def __init__(self):
@@ -85,10 +81,15 @@ class EE(Source_Book):
         self.races = [Aarakocra(), Genasi(), Goliath()]
         self.subraces = [Svirfneblin(), Air_Genasi(), Earth_Genasi(), Fire_Genasi(), Water_Genasi()]
 
-class RR(Source_Book):
+class VGtM(Source_Book):
     def __init__(self):
         super().__init__()
-        self.title = "Revised Ranger"
+        self.title = "Volo's Guide to Monsters"
+
+class MToF(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Mordenkainen's Tome of Foes"
 
 class XGtE(Source_Book):
     def __init__(self):
@@ -110,11 +111,48 @@ class GotG(Source_Book):
         super().__init__()
         self.title = "Bigby Presents: Glory of the Giants"
 
+class Eberron(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Eberron: Rising from the Last War"
+
+class Ravnica(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Guildmaster's Guide to Ravnica"
+
+class Theros(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Mythic Odysseys of Theros"
+
+class Strixhaven(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Strixhaven: A Curriculum of Chaos"
+
+class Wildemount(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Explorer's Guide to Wildemount"
+
+class RR(Source_Book):
+    def __init__(self):
+        super().__init__()
+        self.title = "Revised Ranger"
+
 PHB = PHB()
 SCAG = SCAG()
 EE = EE()
-RR = RR()
+VGtM = VGtM()
+MToF = MToF()
 XGtE = XGtE()
 TCoE = TCoE()
 FToD = FToD()
 GotG = GotG()
+Eberron = Eberron()
+Ravnica = Ravnica()
+Theros = Theros()
+Strixhaven = Strixhaven()
+Wildemount = Wildemount()
+RR = RR()

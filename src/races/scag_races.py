@@ -1,5 +1,5 @@
 from char_values import PC
-from races.phb_races import Dwarf, Gnome, Half_Elf, Tiefling
+from races.phb_races import Dwarf, Gnome, Halfling, Half_Elf, Tiefling
 
 
 class Duergar(Dwarf):
@@ -27,6 +27,15 @@ class Svirfneblin(Gnome):
         self.traits[0] = "Superior Darkvision"
         self.traits.append("Stone Camouflage")
         self.langs.append("Undercommon")
+
+
+class Ghostwise_Halfling(Halfling):
+    def __init__(self):
+        super().__init__()
+        self.parent = Halfling()
+        self.name = "Ghostwise Halfling"
+        self.asi.append((4,1))
+        self.traits.append("Silent Speech")
 
 
 class Half_Elf_Variant(Half_Elf):

@@ -198,8 +198,8 @@ class Human_Variant(Race):
 
         print("Choose a feat.")
         while True:
-            inp = str.lower(input())
-            if inp == "exit":
+            inp = input()
+            if str.lower(inp) == "exit":
                 quit()
             if inp not in self.feats and inp not in PC.feats:
                 self.feats.append(inp)
