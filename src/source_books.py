@@ -3,6 +3,8 @@ from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonb
 from races.scag_races import Duergar, Ghostwise_Halfling, Half_Elf_Variant, Svirfneblin, Tiefling_Variant
 from races.ee_races import (Aarakocra, Genasi, Goliath,
                             Air_Genasi, Earth_Genasi, Fire_Genasi, Water_Genasi)
+from races.vgtm_races import (Aasimar, Firbolg, Kenku, Lizardfolk, Tabaxi, Triton, Bugbear, Goblin, Hobgoblin, Kobold, Orc, Yuan_Ti_Pureblood,
+                              Protector_Aasimar, Scourge_Aasimar, Fallen_Aasimar)
 from jobs import Barbarian
 from char_values import PC
 
@@ -85,6 +87,8 @@ class VGtM(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Volo's Guide to Monsters"
+        self.races = [Aasimar(), Firbolg(), Goliath(), Kenku(), Lizardfolk(), Tabaxi(), Triton(), Bugbear(), Goblin(), Hobgoblin(), Kobold(), Orc(), Yuan_Ti_Pureblood()]
+        self.subraces = [Protector_Aasimar(), Scourge_Aasimar(), Fallen_Aasimar()]
 
 class MToF(Source_Book):
     def __init__(self):

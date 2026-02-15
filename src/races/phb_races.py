@@ -8,7 +8,6 @@ class Dwarf(Race):
         super().__init__()
         self.name = "Dwarf"
         self.asi = [(2,2)]
-        self.size = "Medium"
         self.speed["walk"] = 25
         self.weapon_profs = ["battleaxe","handaxe","light hammer","warhammer"]
         self.traits = ["Darkvision","Dwarven Resilience","Stonecunning"]
@@ -56,8 +55,6 @@ class Elf(Race):
         super().__init__()
         self.name = "Elf"
         self.asi = [(1,2)]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.traits = ["Darkvision","Fey Ancestry","Trance"]
         self.skill_profs = ["Perception"]
         self.langs = ["Common","Elvish"]
@@ -76,11 +73,11 @@ class High_Elf(Elf):
             inp = input()
             if str.lower(inp) == "exit":
                 quit()
-            if inp not in self.spells and inp not in PC.spells:
-                self.spells.append(inp)
-                break
             else:
-                print(f"{inp} is not a valid cantrip name or is already known by your character.")
+                self.spells.append(f"{inp}*")
+                break
+            #else:
+            #    print(f"{inp} is not a valid cantrip name.")
 
         print("Choose a language other than Common or Elvish.")
         for i in range(len(languages)):
@@ -112,14 +109,14 @@ class Drow(Elf):
         self.name = "Drow"
         self.asi.append((5,1))
         self.traits.append("Sunlight Sensitivity")
-        self.spells = ["Dancing Lights"]
+        self.spells = ["Dancing Lights*"]
         self.weapon_profs = ["rapier","shortsword","hand crossbow"]
 
     def check_lvl(self):
-        if PC.lvl >= 3:
-            self.spells.append("Faerie Fire")
-        if PC.lvl >= 5:
-            self.spells.append("Darkness")
+        if PC.lvl >= 3 and "Faerie Fire*" not in self.spells:
+            self.spells.append("Faerie Fire*")
+        if PC.lvl >= 5 and "Darkness*" not in self.spells:
+            self.spells.append("Darkness*")
 
 
 class Halfling(Race):
@@ -155,8 +152,6 @@ class Human(Race):
         super().__init__()
         self.name = "Human"
         self.asi = [(0,1),(1,1),(2,1),(3,1),(4,1),(5,1)]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.langs = ["Common"]
 
     def choices(self):
@@ -178,8 +173,6 @@ class Human_Variant(Race):
         super().__init__()
         self.name = "Human (Variant)"
         self.asi = [["CHOICE",1],["CHOICE",1]]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.langs = ["Common"]
 
     def choices(self):
@@ -226,8 +219,6 @@ class Dragonborn(Race):
         super().__init__()
         self.name = "Dragonborn"
         self.asi = [(0,2),(5,1)]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.traits = ["Draconic Ancestry","Breath Weapon","Damage Resistance"]
         self.langs = ["Common","Draconic"]
 
@@ -291,7 +282,7 @@ class Forest_Gnome(Gnome):
         self.parent = Gnome()
         self.name = "Forest Gnome"
         self.asi.append((1,1))
-        self.spells = ["Minor Illusion"]
+        self.spells = ["Minor Illusion*"]
         self.traits.append("Speak with Small Beasts")
 
 class Rock_Gnome(Gnome):
@@ -303,26 +294,24 @@ class Rock_Gnome(Gnome):
         self.traits.extend(["Artificer's Lore","Tinker"])
 
 
-
 class Half_Elf(Race):
     def __init__(self):
         super().__init__()
         self.name = "Half-Elf"
         self.asi = [(5,2),["CHOICE",1],["CHOICE",1]]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.traits = ["Darkvision","Fey Ancestry"]
         self.langs = ["Common","Elvish"]
 
     def choices(self):
         counter = 0
         available_skills = skills.copy()
+
+        print("Choose 2 skill proficiencies.")
         
         while counter < 2:
             for i in range(len(available_skills)):
                 if available_skills[i-1] in self.skill_profs or available_skills[i-1] in PC.skill_profs:
                     del available_skills[i-1]
-            print("Choose a skill proficiency.")
             for i in range(len(available_skills)):
                 print(f"[{i+1}] - {available_skills[i]}")
             inp = str.lower(input())
@@ -354,8 +343,6 @@ class Half_Orc(Race):
         super().__init__()
         self.name = "Half-Orc"
         self.asi = [(0,2),(2,1)]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.traits = ["Darkvision","Relentless Endurance","Savage Attacks"]
         self.skill_profs = ["Intimidation"]
         self.langs = ["Common","Orc"]
@@ -366,16 +353,12 @@ class Tiefling(Race):
         super().__init__()
         self.name = "Tiefling"
         self.asi = [(3,1),(5,2)]
-        self.size = "Medium"
-        self.speed["walk"] = 30
         self.traits = ["Darkvision","Hellish Resistance"]
-        self.spells = ["Thaumaturgy"]
+        self.spells = ["Thaumaturgy*"]
         self.langs = ["Common","Infernal"]
 
     def check_lvl(self):
-        if PC.lvl >= 3:
-            if "Hellish Rebuke" not in self.spells:
-                self.spells.append("Hellish Rebuke")
-        if PC.lvl >= 5:
-            if "Darkness" not in self.spells:
-                self.spells.append("Darkness")
+        if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells:
+            self.spells.append("Hellish Rebuke*")
+        if PC.lvl >= 5 and "Darkness*" not in self.spells:
+            self.spells.append("Darkness*")

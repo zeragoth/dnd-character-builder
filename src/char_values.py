@@ -2,10 +2,8 @@ class Race:
     def __init__(self):
         self.name = "race"
         self.asi = []
-        self.size = "size"
-        self.speed = {"walk": 30,
-                      "swim": 0,
-                      "fly": 0}
+        self.size = "Medium"
+        self.speed = {"walk": 30}
         self.armor_profs = []
         self.weapon_profs = []
         self.tool_profs = []

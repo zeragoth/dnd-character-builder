@@ -13,9 +13,9 @@ class Duergar(Dwarf):
         self.traits.extend(["Duergar Resilience","Sunlight Sensitivity"])
 
     def check_lvl(self):
-        if PC.lvl >= 3:
+        if PC.lvl >= 3 and "Enlarge/Reduce*" not in self.spells:
             self.spells.append("Enlarge/Reduce*")
-        if PC.lvl >= 5:
+        if PC.lvl >= 5 and "Invisibility*" not in self.spells:
             self.spells.append("Invisibility*")
 
 class Svirfneblin(Gnome):
@@ -65,16 +65,16 @@ class Half_Elf_Variant(Half_Elf):
             elif "5" in inp:
                 self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
             elif "6" in inp:
+                print("Choose a cantrip from the Wizard spell list.")
                 while True:
-                    print("Choose a cantrip from the Wizard spell list.")
                     inp = input()
                     if str.lower(inp) == "exit":
                         quit()
-                    if inp not in self.spells and inp not in PC.spells:
-                        self.spells.append(inp)
-                        break
                     else:
-                        print(f"{inp} is not a valid cantrip name or is already known by your character.")
+                        self.spells.append(f"{inp}*")
+                        break
+                    #else:
+                    #    print(f"{inp} is not a valid cantrip name.")
             elif "7" in inp:
                 self.drow_magic = True
             elif "8" in inp:
@@ -85,10 +85,10 @@ class Half_Elf_Variant(Half_Elf):
 
     def check_lvl(self):
         if self.drow_magic == True:
-            if PC.lvl >= 3:
-                self.spells.append("Faerie Fire")
-            if PC.lvl >= 5:
-                self.spells.append("Darkness")
+            if PC.lvl >= 3 and "Faerie Fire*" not in self.spells:
+                self.spells.append("Faerie Fire*")
+            if PC.lvl >= 5 and "Darkness*" not in self.spells:
+                self.spells.append("Darkness*")
  
 
 class Tiefling_Variant(Tiefling):
@@ -123,20 +123,20 @@ class Tiefling_Variant(Tiefling):
 
     def check_lvl(self):
         if self.devil_tongue == True:
-            self.spells.append("Vicious Mockery")
-            if PC.lvl >= 3:
-                self.spells.append("Charm Person")
+            self.spells.append("Vicious Mockery*")
+            if PC.lvl >= 3 and "Charm Person*" not in self.spells:
+                self.spells.append("Charm Person*")
             if PC.lvl >= 5:
-                self.spells.append("Enthrall")
+                self.spells.append("Enthrall*")
 
         if self.hellfire == True:
-            if PC.lvl >= 3:
-                self.spells.append("Burning Hands")
-            if PC.lvl >= 5:
-                self.spells.append("Darkness")
+            if PC.lvl >= 3 and "Burning Hands*" not in self.spells:
+                self.spells.append("Burning Hands*")
+            if PC.lvl >= 5 and "Darkness*" not in self.spells:
+                self.spells.append("Darkness*")
 
         if self.infernal == True:
-            if PC.lvl >= 3:
-                self.spells.append("Hellish Rebuke")
-            if PC.lvl >= 5:
-                self.spells.append("Darkness")
+            if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells:
+                self.spells.append("Hellish Rebuke*")
+            if PC.lvl >= 5 and "Darkness*" not in self.spells:
+                self.spells.append("Darkness*")
