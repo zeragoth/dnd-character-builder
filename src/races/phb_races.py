@@ -232,35 +232,25 @@ class Dragonborn(Race):
             if inp == "exit":
                 quit()
             elif "2" in inp:
-                self.traits[0] = "Draconic Ancestry: Blue Dragon"
-                self.traits[2] = "Damage Resistance: Lightning"
+                self.traits[0] = "Draconic Ancestry: Blue Dragon (Lightning)"
             elif "3" in inp:
-                self.traits[0] = "Draconic Ancestry: Brass Dragon"
-                self.traits[2] = "Damage Resistance: Fire"
+                self.traits[0] = "Draconic Ancestry: Brass Dragon (Fire)"
             elif "4" in inp:
-                self.traits[0] = "Draconic Ancestry: Bronze Dragon"
-                self.traits[2] = "Damage Resistance: Lightning"
+                self.traits[0] = "Draconic Ancestry: Bronze Dragon (Lightning)"
             elif "5" in inp:
-                self.traits[0] = "Draconic Ancestry: Copper Dragon"
-                self.traits[2] = "Damage Resistance: Acid"
+                self.traits[0] = "Draconic Ancestry: Copper Dragon (Acid)"
             elif "6" in inp:
-                self.traits[0] = "Draconic Ancestry: Gold Dragon"
-                self.traits[2] = "Damage Resistance: Fire"
+                self.traits[0] = "Draconic Ancestry: Gold Dragon (Fire)"
             elif "7" in inp:
-                self.traits[0] = "Draconic Ancestry: Green Dragon"
-                self.traits[2] = "Damage Resistance: Poison"
+                self.traits[0] = "Draconic Ancestry: Green Dragon (Poison)"
             elif "8" in inp:
-                self.traits[0] = "Draconic Ancestry: Red Dragon"
-                self.traits[2] = "Damage Resistance: Fire"
+                self.traits[0] = "Draconic Ancestry: Red Dragon (Fire)"
             elif "9" in inp:
-                self.traits[0] = "Draconic Ancestry: Silver Dragon"
-                self.traits[2] = "Damage Resistance: Cold"
+                self.traits[0] = "Draconic Ancestry: Silver Dragon (Cold)"
             elif "10" in inp:
-                self.traits[0] = "Draconic Ancestry: White Dragon"
-                self.traits[2] = "Damage Resistance: Cold"
+                self.traits[0] = "Draconic Ancestry: White Dragon (Cold)"
             elif "1" in inp:
-                self.traits[0] = "Draconic Ancestry: Black Dragon"
-                self.traits[2] = "Damage Resistance: Acid"
+                self.traits[0] = "Draconic Ancestry: Black Dragon (Acid)"
             else:
                 print(f"{inp} is not a valid input.")
             return

@@ -1,10 +1,20 @@
-from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
-                   Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling, Stout_Halfling, Forest_Gnome, Rock_Gnome)
+from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf,
+                             Half_Orc, Tiefling,
+                            
+                            Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling,
+                            Stout_Halfling, Forest_Gnome, Rock_Gnome)
 from races.scag_races import Duergar, Ghostwise_Halfling, Half_Elf_Variant, Svirfneblin, Tiefling_Variant
 from races.ee_races import (Aarakocra, Genasi, Goliath,
                             Air_Genasi, Earth_Genasi, Fire_Genasi, Water_Genasi)
-from races.vgtm_races import (Aasimar, Firbolg, Kenku, Lizardfolk, Tabaxi, Triton, Bugbear, Goblin, Hobgoblin, Kobold, Orc, Yuan_Ti_Pureblood,
+from races.vgtm_races import (Aasimar, Firbolg, Kenku, Lizardfolk, Tabaxi, Triton, Bugbear, Goblin,
+                              Hobgoblin, Kobold, Orc, Yuan_Ti_Pureblood,
+                              
                               Protector_Aasimar, Scourge_Aasimar, Fallen_Aasimar)
+from races.mtof_races import (Gith, 
+                            Asmodeus_Tiefling, Baalzebul_Tiefling, Dispater_Tiefling, Fierna_Tiefling,
+                            Glasya_Tiefling, Levistus_Tiefling, Mammon_Tiefling, Mephistopheles_Tiefling,
+                            Zariel_Tiefling, Eladrin, Sea_Elf, Shadar_Kai, Githyanki, Githzerai)
+from races.ftod_races import (Chromatic_Dragonborn, Gem_Dragonborn, Metallic_Dragonborn)
 from jobs import Barbarian
 from char_values import PC
 
@@ -65,8 +75,10 @@ class PHB(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Player's Handbook"
-        self.races = [Dwarf(), Elf(), Halfling(), Human(), Human_Variant(), Dragonborn(), Gnome(), Half_Elf(), Half_Orc(), Tiefling()]
-        self.subraces = [Hill_Dwarf(), Mountain_Dwarf(), High_Elf(), Wood_Elf(), Drow(), Lightfoot_Halfling(), Stout_Halfling(), Forest_Gnome(), Rock_Gnome()]
+        self.races = [Dwarf(), Elf(), Halfling(), Human(), Human_Variant(), Dragonborn(), Gnome(),
+                      Half_Elf(), Half_Orc(), Tiefling()]
+        self.subraces = [Hill_Dwarf(), Mountain_Dwarf(), High_Elf(), Wood_Elf(), Drow(),
+                         Lightfoot_Halfling(), Stout_Halfling(), Forest_Gnome(), Rock_Gnome()]
         self.jobs = [Barbarian()]
 
 class SCAG(Source_Book):
@@ -87,13 +99,19 @@ class VGtM(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Volo's Guide to Monsters"
-        self.races = [Aasimar(), Firbolg(), Goliath(), Kenku(), Lizardfolk(), Tabaxi(), Triton(), Bugbear(), Goblin(), Hobgoblin(), Kobold(), Orc(), Yuan_Ti_Pureblood()]
+        self.races = [Aasimar(), Firbolg(), Goliath(), Kenku(), Lizardfolk(), Tabaxi(), Triton(), Bugbear(),
+                      Goblin(), Hobgoblin(), Kobold(), Orc(), Yuan_Ti_Pureblood()]
         self.subraces = [Protector_Aasimar(), Scourge_Aasimar(), Fallen_Aasimar()]
 
 class MToF(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Mordenkainen's Tome of Foes"
+        self.races = [Gith()]
+        self.subraces = [Asmodeus_Tiefling(), Baalzebul_Tiefling(), Dispater_Tiefling(), Fierna_Tiefling(),
+                         Glasya_Tiefling(), Levistus_Tiefling(), Mammon_Tiefling(),
+                         Mephistopheles_Tiefling(), Zariel_Tiefling(), Eladrin(), Sea_Elf(), Shadar_Kai(),
+                         Duergar(), Githyanki(), Githzerai(), Svirfneblin()]
 
 class XGtE(Source_Book):
     def __init__(self):
@@ -109,6 +127,7 @@ class FToD(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Fizban's Treasury of Dragons"
+        self.races = [Chromatic_Dragonborn(), Gem_Dragonborn(), Metallic_Dragonborn()]
 
 class GotG(Source_Book):
     def __init__(self):
