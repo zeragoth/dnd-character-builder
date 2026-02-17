@@ -1,6 +1,6 @@
 from char_values import PC, Race
 from languages import languages
-from WEAPONS import MARTIAL_MELEE_WEAPONS, MARTIAL_RANGED_WEAPONS
+from weapons import martial_melee_weapons, martial_ranged_weapons
 
 
 class Aasimar(Race):
@@ -10,7 +10,7 @@ class Aasimar(Race):
         self.asi = [(5,2)]
         self.traits = ["Darkvision", "Celestial Resistance", "Healing Hands"]
         self.spells = ["Light*"]
-        self.langs = ["Common", "Celestial"]
+        self.langs.append("Celestial")
 
 class Protector_Aasimar(Aasimar):
     def __init__(self):
@@ -44,7 +44,7 @@ class Firbolg(Race):
         self.asi = [(4,2),(0,1)]
         self.traits = ["Hidden Step", "Powerful Build", "Speech of Beast and Leaf"]
         self.spells = ["Detect Magic*", "Disguise Self*"]
-        self.langs = ["Common", "Elvish", "Giant"]
+        self.langs.extend(["Elvish", "Giant"])
 
 
 class Kenku(Race):
@@ -53,7 +53,7 @@ class Kenku(Race):
         self.name = "Kenku"
         self.asi = [(1,2),(4,1)]
         self.traits = ["Expert Forgery","Mimicry"]
-        self.langs = ["Common", "Auran"]
+        self.langs.append("Primordial (Auran)")
 
     def choices(self):
         counter = 0
@@ -84,7 +84,7 @@ class Lizardfolk(Race):
         self.asi = [(2,2),(4,1)]
         self.speed["swim"] = 30
         self.traits = ["Bite", "Cunning Artisan", "Hold Breath", "Natural Armor", "Hungry Jaws"]
-        self.langs = ["Common", "Draconic"]
+        self.langs.append("Draconic")
 
     def choices(self):
         counter = 0
@@ -116,7 +116,6 @@ class Tabaxi(Race):
         self.speed["climb"] = 20
         self.traits = ["Darkvision", "Feline Agility", "Cat's Claws"]
         self.skill_profs = ["Perception", "Stealth"]
-        self.langs = ["Common"]
 
     def choices(self):
         print("Choose a language other than Common.")
@@ -141,7 +140,7 @@ class Triton(Race):
         self.speed["swim"] = 30
         self.traits = ["Amphibious", "Emissary of the Sea", "Guardians of the Depths"]
         self.spells = ["Fog Cloud*"]
-        self.langs = ["Common", "Primordial"]
+        self.langs.append("Primordial (Aquan)")
 
     def check_lvl(self):
         if PC.lvl >= 3 and "Gust of Wind*" not in self.spells:
@@ -157,7 +156,7 @@ class Bugbear(Race):
         self.asi = [(0,2),(1,1)]
         self.traits = ["Darkvision", "Long-Limbed", "Powerful Build", "Surprise Attack"]
         self.skill_profs = ["Stealth"]
-        self.langs = ["Common", "Goblin"]
+        self.langs.append("Goblin")
 
 
 class Goblin(Race):
@@ -167,7 +166,7 @@ class Goblin(Race):
         self.asi = [(1,2),(2,1)]
         self.size = "Small"
         self.traits = ["Darkvision", "Fury of the Small", "Nimble Escape"]
-        self.langs = ["Common", "Goblin"]
+        self.langs.append("Goblin")
 
 
 class Hobgoblin(Race):
@@ -177,11 +176,11 @@ class Hobgoblin(Race):
         self.asi = [(2,2),(3,1)]
         self.traits = ["Darkvision", "Saving Face"]
         self.armor_profs = ["Light Armor"]
-        self.langs = ["Common", "Goblin"]
+        self.langs.append("Goblin")
 
     def choices(self):
         counter = 0
-        available_weapons = MARTIAL_MELEE_WEAPONS.copy() + MARTIAL_RANGED_WEAPONS.copy()
+        available_weapons = martial_melee_weapons + martial_ranged_weapons
 
         print("Choose 2 weapon proficiencies.")
         
@@ -208,7 +207,7 @@ class Kobold(Race):
         self.asi = [(1,2),(0,-2)]
         self.size = "Small"
         self.traits = ["Darkvision", "Grovel, Cower, and Beg", "Pack Tactics", "Sunlight Sensitivity"]
-        self.langs = ["Common", "Draconic"]
+        self.langs.append("Draconic")
 
 
 class Orc(Race):
@@ -217,8 +216,27 @@ class Orc(Race):
         self.name = "Orc"
         self.asi = [(0,2),(2,1)]
         self.traits = ["Darkvision", "Aggressive", "Powerful Build"]
-        self.skill_profs = ["Intimidation"]
-        self.langs = ["Common", "Orc"]
+        self.langs.append("Orc")
+
+    def choices(self):
+        available_skills = ["Animal Handling", "Insight", "Intimidation", "Medicine", "Nature", "Perception","Survival"]
+
+        print("Choose a skill proficiency.")
+        
+        for i in range(len(available_skills)):
+                if available_skills[i-1] in self.skill_profs or available_skills[i-1] in PC.skill_profs:
+                    del available_skills[i-1]
+        for i in range(len(available_skills)):
+            print(f"[{i+1}] - {available_skills[i]}")
+        while True:
+            inp = str.lower(input())
+            if inp == "exit":
+                quit()
+            if inp.isdigit() and 1 <= int(inp) <= len(available_skills) and available_skills[int(inp)-1] not in self.skill_profs and available_skills[int(inp)-1] not in PC.skill_profs:
+                self.skill_profs.append(available_skills[int(inp)-1])
+                return
+            else:
+                print(f"{inp} is not a valid skill name or is already known by your character.")
 
 
 class Yuan_Ti_Pureblood(Race):
@@ -228,7 +246,7 @@ class Yuan_Ti_Pureblood(Race):
         self.asi = [(5,2),(3,1)]
         self.traits = ["Darkvision", "Magic Resistance", "Poison Immunity"]
         self.spells = ["Poison Spray*","Animal Friendship (snakes)*"]
-        self.langs = ["Common", "Abyssal", "Draconic"]
+        self.langs.extend(["Abyssal", "Draconic"])
 
     def check_lvl(self):
         if PC.lvl >= 3 and "Suggestion*" not in self.spells:

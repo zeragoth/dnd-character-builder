@@ -9,7 +9,7 @@ class Race:
         self.tool_profs = []
         self.skill_profs = []
         self.traits = []
-        self.langs = []
+        self.langs = ["Common"]
         self.parent = None
         self.subraces = []
         self.spells = []

@@ -154,7 +154,7 @@ class Gith(Race):
         super().__init__()
         self.name = "Gith"
         self.asi = [(3,1)]
-        self.langs = ["Common", "Gith"]
+        self.langs.append("Gith")
 
 class Githyanki(Gith):
     def __init__(self):

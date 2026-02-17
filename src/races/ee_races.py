@@ -9,7 +9,7 @@ class Aarakocra(Race):
         self.speed["walk"] = 25
         self.speed["fly"] = 50
         self.traits = ["Flight", "Talons"]
-        self.langs = ["Common","Aarakocra","Auran (Primordial)"]
+        self.langs.extend(["Aarakocra","Auran (Primordial)"])
 
 
 class Genasi(Race):
@@ -17,7 +17,7 @@ class Genasi(Race):
         super().__init__()
         self.name = "Genasi"
         self.asi = [(2,2)]
-        self.langs = ["Common","Primordial"]
+        self.langs.append("Primordial")
 
 class Air_Genasi(Genasi):
     def __init__(self):
@@ -72,4 +72,4 @@ class Goliath(Race):
         self.asi = [(0,2),(2,1)]
         self.traits = ["Stone's Endurance","Powerful Build","Mountain Born"]
         self.skill_profs = ["Athletics"]
-        self.langs = ["Common","Giant"]
+        self.langs.append("Giant")

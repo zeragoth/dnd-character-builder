@@ -1,4 +1,5 @@
 from char_values import PC, Race
+from languages import languages
 
 
 class Chromatic_Dragonborn(Race):
@@ -28,7 +29,20 @@ class Chromatic_Dragonborn(Race):
                 self.traits[0] = "Chromatic Ancestry: White Dragon (Cold)"
             else:
                 print(f"{inp} is not a valid input.")
-            return
+            break
+        
+        print("Choose a language other than Common.")
+        for i in range(len(languages)):
+            print(f"[{i+1}] - {languages[i]}")
+        while True:
+            inp = str.lower(input())
+            if inp == "exit":
+                quit()
+            if inp.isdigit() and 1 <= int(inp) <= len(languages) and languages[int(inp)-1] not in self.langs:
+                self.langs.append(languages[int(inp)-1])
+                return
+            else:
+                print(f"{inp} is not a valid language name or is already known by your character.")
         
     def check_lvl(self):
         if PC.lvl >= 5 and "Chromatic Warding" not in self.traits:
@@ -61,7 +75,20 @@ class Gem_Dragonborn(Race):
                 self.traits[0] = "Gem Ancestry: Topaz Dragon (Necrotic)"
             else:
                 print(f"{inp} is not a valid input.")
-            return
+            break
+
+        print("Choose a language other than Common.")
+        for i in range(len(languages)):
+            print(f"[{i+1}] - {languages[i]}")
+        while True:
+            inp = str.lower(input())
+            if inp == "exit":
+                quit()
+            if inp.isdigit() and 1 <= int(inp) <= len(languages) and languages[int(inp)-1] not in self.langs:
+                self.langs.append(languages[int(inp)-1])
+                return
+            else:
+                print(f"{inp} is not a valid language name or is already known by your character.")
         
     def check_lvl(self):
         if PC.lvl >= 5 and "Gem Flight" not in self.traits:
@@ -94,7 +121,20 @@ class Metallic_Dragonborn(Race):
                 self.traits[0] = "Metallic Ancestry: Silver Dragon (Cold)"
             else:
                 print(f"{inp} is not a valid input.")
-            return
+            break
+
+        print("Choose a language other than Common.")
+        for i in range(len(languages)):
+            print(f"[{i+1}] - {languages[i]}")
+        while True:
+            inp = str.lower(input())
+            if inp == "exit":
+                quit()
+            if inp.isdigit() and 1 <= int(inp) <= len(languages) and languages[int(inp)-1] not in self.langs:
+                self.langs.append(languages[int(inp)-1])
+                return
+            else:
+                print(f"{inp} is not a valid language name or is already known by your character.")
         
     def check_lvl(self):
         if PC.lvl >= 5 and "Metallic Breath Weapon" not in self.traits:

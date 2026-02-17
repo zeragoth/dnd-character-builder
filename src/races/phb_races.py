@@ -11,7 +11,7 @@ class Dwarf(Race):
         self.speed["walk"] = 25
         self.weapon_profs = ["battleaxe","handaxe","light hammer","warhammer"]
         self.traits = ["Darkvision","Dwarven Resilience","Stonecunning"]
-        self.langs = ["Common","Dwarvish"]
+        self.langs.append("Dwarvish")
         self.subraces = []
 
     def choices(self):
@@ -57,7 +57,7 @@ class Elf(Race):
         self.asi = [(1,2)]
         self.traits = ["Darkvision","Fey Ancestry","Trance"]
         self.skill_profs = ["Perception"]
-        self.langs = ["Common","Elvish"]
+        self.langs.append("Elvish")
 
 class High_Elf(Elf):
     def __init__(self):
@@ -127,7 +127,7 @@ class Halfling(Race):
         self.size = "Small"
         self.speed["walk"] = 25
         self.traits = ["Lucky","Brave","Halfling Nimbleness"]
-        self.langs = ["Common","Halfling"]
+        self.langs.append("Halfling")
         self.subraces = []
 
 class Lightfoot_Halfling(Halfling):
@@ -152,7 +152,6 @@ class Human(Race):
         super().__init__()
         self.name = "Human"
         self.asi = [(0,1),(1,1),(2,1),(3,1),(4,1),(5,1)]
-        self.langs = ["Common"]
 
     def choices(self):
         print("Choose a language other than Common.")
@@ -168,12 +167,17 @@ class Human(Race):
             else:
                 print(f"{inp} is not a valid language name or is already known by your character.")
 
-class Human_Variant(Race):
+class Default_Human(Human):
     def __init__(self):
         super().__init__()
+        self.parent = Human()
+
+class Human_Variant(Human):
+    def __init__(self):
+        super().__init__()
+        self.parent = Human()
         self.name = "Human (Variant)"
         self.asi = [["CHOICE",1],["CHOICE",1]]
-        self.langs = ["Common"]
 
     def choices(self):
         print("Choose a skill proficiency.")
@@ -220,7 +224,7 @@ class Dragonborn(Race):
         self.name = "Dragonborn"
         self.asi = [(0,2),(5,1)]
         self.traits = ["Draconic Ancestry","Breath Weapon","Damage Resistance"]
-        self.langs = ["Common","Draconic"]
+        self.langs.append("Draconic")
 
     def choices(self):
         print("Choose a draconic ancestry.")
@@ -264,7 +268,7 @@ class Gnome(Race):
         self.size = "Small"
         self.speed["walk"] = 25
         self.traits = ["Darkvision","Gnome Cunning"]
-        self.langs = ["Common","Gnomish"]
+        self.langs.append("Gnomish")
 
 class Forest_Gnome(Gnome):
     def __init__(self):
@@ -290,7 +294,7 @@ class Half_Elf(Race):
         self.name = "Half-Elf"
         self.asi = [(5,2),["CHOICE",1],["CHOICE",1]]
         self.traits = ["Darkvision","Fey Ancestry"]
-        self.langs = ["Common","Elvish"]
+        self.langs.append("Elvish")
 
     def choices(self):
         counter = 0
@@ -327,6 +331,11 @@ class Half_Elf(Race):
                 else:
                     print(f"{inp} is not a valid language name or is already known by your character.")
 
+class Default_Half_Elf(Half_Elf):
+    def __init__(self):
+        super().__init__()
+        self.parent = Half_Elf()
+
 
 class Half_Orc(Race):
     def __init__(self):
@@ -335,7 +344,7 @@ class Half_Orc(Race):
         self.asi = [(0,2),(2,1)]
         self.traits = ["Darkvision","Relentless Endurance","Savage Attacks"]
         self.skill_profs = ["Intimidation"]
-        self.langs = ["Common","Orc"]
+        self.langs.append("Orc")
 
 
 class Tiefling(Race):
@@ -345,7 +354,7 @@ class Tiefling(Race):
         self.asi = [(3,1),(5,2)]
         self.traits = ["Darkvision","Hellish Resistance"]
         self.spells = ["Thaumaturgy*"]
-        self.langs = ["Common","Infernal"]
+        self.langs.append("Infernal")
 
     def check_lvl(self):
         if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells:

@@ -1,25 +1,37 @@
-from races.phb_races import (Dwarf, Elf, Halfling, Human, Human_Variant, Dragonborn, Gnome, Half_Elf,
+from races.phb_races import (Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half_Elf,
                              Half_Orc, Tiefling,
-                            
                             Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling,
-                            Stout_Halfling, Forest_Gnome, Rock_Gnome)
+                            Stout_Halfling, Human_Variant, Default_Human, Default_Half_Elf, Forest_Gnome,
+                            Rock_Gnome)
+
 from races.scag_races import Duergar, Ghostwise_Halfling, Half_Elf_Variant, Svirfneblin, Tiefling_Variant
+
 from races.ee_races import (Aarakocra, Genasi, Goliath,
                             Air_Genasi, Earth_Genasi, Fire_Genasi, Water_Genasi)
+
 from races.vgtm_races import (Aasimar, Firbolg, Kenku, Lizardfolk, Tabaxi, Triton, Bugbear, Goblin,
                               Hobgoblin, Kobold, Orc, Yuan_Ti_Pureblood,
-                              
                               Protector_Aasimar, Scourge_Aasimar, Fallen_Aasimar)
-from races.mtof_races import (Gith, 
+
+from races.mtof_races import (Gith,
                             Asmodeus_Tiefling, Baalzebul_Tiefling, Dispater_Tiefling, Fierna_Tiefling,
                             Glasya_Tiefling, Levistus_Tiefling, Mammon_Tiefling, Mephistopheles_Tiefling,
                             Zariel_Tiefling, Eladrin, Sea_Elf, Shadar_Kai, Githyanki, Githzerai)
+
 from races.ftod_races import (Chromatic_Dragonborn, Gem_Dragonborn, Metallic_Dragonborn)
+
+from races.eberron_races import (Changeling, Kalashtar, Shifter, Warforged,
+                                Beasthide_Shifter, Longtooth_Shifter, Swiftstride_Shifter, Wildhunt_Shifter)
+
 from jobs import Barbarian
 from char_values import PC
+from weapons import martial_melee_weapons
+from languages import languages
 
 
 def choose_books():
+    for book in PC.books:
+        book.remove_misc()
     PC.books = []
     booklist = [PHB, SCAG, EE, VGtM, MToF, XGtE, TCoE, FToD, GotG, Eberron, Ravnica, Theros, Strixhaven, Wildemount, RR]
 
@@ -42,6 +54,8 @@ def choose_books():
         else:
             print(f"Books selected: {get_book_titles()}")
             apply_subraces(PC.books)
+            for book in PC.books:
+                book.apply_misc()
             return
 
 def get_book_titles():
@@ -71,6 +85,12 @@ class Source_Book:
         self.spells = []
         self.bgrounds = []
 
+    def apply_misc(self):
+        pass
+
+    def remove_misc(self):
+        pass
+
 class PHB(Source_Book):
     def __init__(self):
         super().__init__()
@@ -78,7 +98,7 @@ class PHB(Source_Book):
         self.races = [Dwarf(), Elf(), Halfling(), Human(), Human_Variant(), Dragonborn(), Gnome(),
                       Half_Elf(), Half_Orc(), Tiefling()]
         self.subraces = [Hill_Dwarf(), Mountain_Dwarf(), High_Elf(), Wood_Elf(), Drow(),
-                         Lightfoot_Halfling(), Stout_Halfling(), Forest_Gnome(), Rock_Gnome()]
+                         Lightfoot_Halfling(), Stout_Halfling(), Default_Human(), Default_Half_Elf(), Forest_Gnome(), Rock_Gnome()]
         self.jobs = [Barbarian()]
 
 class SCAG(Source_Book):
@@ -94,6 +114,14 @@ class EE(Source_Book):
         self.title = "Elemental Evil Player's Companion"
         self.races = [Aarakocra(), Genasi(), Goliath()]
         self.subraces = [Svirfneblin(), Air_Genasi(), Earth_Genasi(), Fire_Genasi(), Water_Genasi()]
+
+    def apply_misc(self):
+        if "Aarakocra" not in languages:
+            languages.append("Aarakocra")
+
+    def remove_misc(self):
+        if "Aarakocra" in languages:
+            languages.remove("Aarakocra")
 
 class VGtM(Source_Book):
     def __init__(self):
@@ -112,6 +140,14 @@ class MToF(Source_Book):
                          Glasya_Tiefling(), Levistus_Tiefling(), Mammon_Tiefling(),
                          Mephistopheles_Tiefling(), Zariel_Tiefling(), Eladrin(), Sea_Elf(), Shadar_Kai(),
                          Duergar(), Githyanki(), Githzerai(), Svirfneblin()]
+        
+    def apply_misc(self):
+        if "Gith" not in languages:
+            languages.append("Gith")
+
+    def remove_misc(self):
+        if "Gith" in languages:
+            languages.remove("Gith")
 
 class XGtE(Source_Book):
     def __init__(self):
@@ -138,6 +174,20 @@ class Eberron(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Eberron: Rising from the Last War"
+        self.races = [Changeling(), Bugbear(), Goblin(), Hobgoblin(), Kalashtar(), Orc(), Shifter(), Warforged()]
+        self.subraces = [Beasthide_Shifter(), Longtooth_Shifter(), Swiftstride_Shifter(), Wildhunt_Shifter()]
+
+    def apply_misc(self):
+        if "double-bladed scimitar" not in martial_melee_weapons:
+            martial_melee_weapons.append("double-bladed scimitar")
+        if "Quori" not in languages:
+            languages.append("Quori")
+
+    def remove_misc(self):
+        if "double-bladed scimitar" in martial_melee_weapons:
+            martial_melee_weapons.remove("double-bladed scimitar")
+        if "Quori" in languages:
+            languages.remove("Quori")
 
 class Ravnica(Source_Book):
     def __init__(self):
