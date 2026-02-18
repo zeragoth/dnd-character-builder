@@ -310,3 +310,64 @@ class Mark_of_Passage(Human):
         self.speed["walk"] = 35
         self.traits.extend(["Intuitive Motion", "Spells of the Mark"])
         self.spells.append("Misty Step*")
+
+class Mark_of_Scribing(Gnome):
+    def __init__(self):
+        super().__init__()
+        self.parent = Gnome()
+        self.name = "Gnome (Mark of Scribing)"
+        self.asi.append((5,1))
+        self.traits.extend(["Gifted Scribe", "Spells of the Mark"])
+        self.spells.extend(["Message*", "Comprehend Languages*"])
+
+    def check_lvl(self):
+        if PC.lvl >= 3 and "Magic Mouth*" not in self.spells:
+            self.spells.append("Magic Mouth*")
+
+class Mark_of_Sentinel(Human):
+    def __init__(self):
+        super().__init__()
+        self.parent = Human()
+        self.name = "Human (Mark of Sentinel)"
+        self.asi = [(2,2),(4,1)]
+        self.traits.extend(["Sentinel's Intuition", "Vigilant Guardian", "Spells of the Mark"])
+        self.spells.append("Shield*")
+
+class Mark_of_Shadow(Elf):
+    def __init__(self):
+        super().__init__()
+        self.parent = Elf()
+        self.name = "Elf (Mark of Shadow)"
+        self.asi.append((5,1))
+        self.traits.extend(["Cunning Intuition", "Spells of the Mark"])
+        self.spells.append("Minor Illusion*")
+
+    def check_lvl(self):
+        if PC.lvl >= 3 and "Invisibility*" not in self.spells:
+            self.spells.append("Invisibility*")
+
+class Mark_of_Storm(Half_Elf):
+    def __init__(self):
+        super().__init__()
+        self.parent = Half_Elf()
+        self.name = "Half-Elf (Mark of Storm)"
+        self.asi = [(5,2),(1,1)]
+        self.traits.extend(["Windwright's Intuition", "Storm's Boon", "Spells of the Mark"])
+        self.spells.append("Gust*")
+
+    def check_lvl(self):
+        if PC.lvl >= 3 and "Gust of Wind*" not in self.spells:
+            self.spells.append("Gust of Wind*")
+
+class Mark_of_Warding(Dwarf):
+    def __init__(self):
+        super().__init__()
+        self.parent = Dwarf()
+        self.name = "Dwarf (Mark of Warding)"
+        self.asi = [(4,2),(1,1)]
+        self.traits.extend(["Warder's Intuition", "Spells of the Mark"])
+        self.spells.extend(["Alarm*", "Mage Armor*"])
+
+    def check_lvl(self):
+        if PC.lvl >= 3 and "Arcane Lock*" not in self.spells:
+            self.spells.append("Arcane Lock*")

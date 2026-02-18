@@ -21,9 +21,13 @@ from races.mtof_races import (Gith,
 from races.ftod_races import (Chromatic_Dragonborn, Gem_Dragonborn, Metallic_Dragonborn)
 
 from races.eberron_races import (Changeling, Kalashtar, Shifter, Warforged,
-                                Beasthide_Shifter, Longtooth_Shifter, Swiftstride_Shifter, Wildhunt_Shifter)
+                                Beasthide_Shifter, Longtooth_Shifter, Swiftstride_Shifter, Wildhunt_Shifter,
+                                Mark_of_Detection, Mark_of_Finding_A, Mark_of_Finding_B, Mark_of_Handling,
+                                Mark_of_Healing, Mark_of_Hospitality, Mark_of_Making, Mark_of_Passage,
+                                Mark_of_Scribing, Mark_of_Sentinel, Mark_of_Shadow, Mark_of_Storm,
+                                Mark_of_Warding)
 
-from jobs import Barbarian
+from jobs import jobs, Artificer
 from char_values import PC
 from weapons import martial_melee_weapons
 from languages import languages
@@ -81,6 +85,7 @@ class Source_Book:
         self.races = []
         self.subraces = []
         self.jobs = []
+        self.subclasses = []
         self.feats = []
         self.spells = []
         self.bgrounds = []
@@ -99,7 +104,7 @@ class PHB(Source_Book):
                       Half_Elf(), Half_Orc(), Tiefling()]
         self.subraces = [Hill_Dwarf(), Mountain_Dwarf(), High_Elf(), Wood_Elf(), Drow(),
                          Lightfoot_Halfling(), Stout_Halfling(), Default_Human(), Default_Half_Elf(), Forest_Gnome(), Rock_Gnome()]
-        self.jobs = [Barbarian()]
+        self.jobs = jobs
 
 class SCAG(Source_Book):
     def __init__(self):
@@ -158,6 +163,7 @@ class TCoE(Source_Book):
     def __init__(self):
         super().__init__()
         self.title = "Tasha's Cauldron of Everything"
+        self.jobs = [Artificer()]
 
 class FToD(Source_Book):
     def __init__(self):
@@ -175,7 +181,12 @@ class Eberron(Source_Book):
         super().__init__()
         self.title = "Eberron: Rising from the Last War"
         self.races = [Changeling(), Bugbear(), Goblin(), Hobgoblin(), Kalashtar(), Orc(), Shifter(), Warforged()]
-        self.subraces = [Beasthide_Shifter(), Longtooth_Shifter(), Swiftstride_Shifter(), Wildhunt_Shifter()]
+        self.subraces = [Beasthide_Shifter(), Longtooth_Shifter(), Swiftstride_Shifter(), Wildhunt_Shifter(),
+                         Mark_of_Detection(), Mark_of_Finding_A(), Mark_of_Finding_B(), Mark_of_Handling(),
+                         Mark_of_Healing(), Mark_of_Hospitality(), Mark_of_Making(), Mark_of_Passage(),
+                         Mark_of_Scribing(), Mark_of_Sentinel(), Mark_of_Shadow(), Mark_of_Storm(),
+                         Mark_of_Warding()]
+        self.jobs = [Artificer()]
 
     def apply_misc(self):
         if "double-bladed scimitar" not in martial_melee_weapons:
