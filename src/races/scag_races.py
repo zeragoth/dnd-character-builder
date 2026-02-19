@@ -1,5 +1,6 @@
 from char_values import PC
 from races.phb_races import Dwarf, Gnome, Halfling, Half_Elf, Tiefling
+from spells import wizard_cantrips
 
 
 class Duergar(Dwarf):
@@ -13,10 +14,10 @@ class Duergar(Dwarf):
         self.traits.extend(["Duergar Resilience","Sunlight Sensitivity"])
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Enlarge/Reduce*" not in self.spells:
-            self.spells.append("Enlarge/Reduce*")
-        if PC.lvl >= 5 and "Invisibility*" not in self.spells:
-            self.spells.append("Invisibility*")
+        if PC.lvl >= 3 and "Enlarge/Reduce*" not in self.spells[2]:
+            self.spells[2].append("Enlarge/Reduce*")
+        if PC.lvl >= 5 and "Invisibility*" not in self.spells[2]:
+            self.spells[2].append("Invisibility*")
 
 class Svirfneblin(Gnome):
     def __init__(self):
@@ -45,7 +46,7 @@ class Half_Elf_Variant(Half_Elf):
         self.drow_magic = False
 
     def choices(self):
-        print("Choose a trait.")
+        print("\nChoose a trait.")
         print("[1] - Keen Senses\n--Wood Elf Descent--\n[2] - Elf Weapon Training (Wood Elf)\n"
         "[3] - Fleet of Foot\n[4] - Mask of the Wild\n--Moon/Sun Elf Descent--\n"
         "[5] - Elf Weapon Training (High Elf)\n[6] - Cantrip\n--Drow Descent--\n"
@@ -65,16 +66,18 @@ class Half_Elf_Variant(Half_Elf):
             elif "5" in inp:
                 self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
             elif "6" in inp:
-                print("Choose a cantrip from the Wizard spell list.")
+                print("\nChoose a cantrip from the Wizard spell list.")
+                for i in range(len(wizard_cantrips)):
+                    print(f"[{i+1}] - {wizard_cantrips[i]}")
                 while True:
-                    inp = input()
-                    if str.lower(inp) == "exit":
+                    inp = str.lower(input())
+                    if inp == "exit":
                         quit()
-                    else:
-                        self.spells.append(f"{inp}*")
+                    if inp.isdigit() and 1 <= int(inp) <= len(wizard_cantrips) and wizard_cantrips[int(inp)-1] not in self.spells[0] and wizard_cantrips[int(inp)-1] not in PC.spells[0]:
+                        self.spells[0].append(wizard_cantrips[int(inp)-1])
                         break
-                    #else:
-                    #    print(f"{inp} is not a valid cantrip name.")
+                    else:
+                        print(f"{inp} is not a valid spell choice or is already known by your character.")
             elif "7" in inp:
                 self.drow_magic = True
             elif "8" in inp:
@@ -85,10 +88,10 @@ class Half_Elf_Variant(Half_Elf):
 
     def check_lvl(self):
         if self.drow_magic == True:
-            if PC.lvl >= 3 and "Faerie Fire*" not in self.spells:
-                self.spells.append("Faerie Fire*")
-            if PC.lvl >= 5 and "Darkness*" not in self.spells:
-                self.spells.append("Darkness*")
+            if PC.lvl >= 3 and "Faerie Fire*" not in self.spells[1]:
+                self.spells[1].append("Faerie Fire*")
+            if PC.lvl >= 5 and "Darkness*" not in self.spells[2]:
+                self.spells[2].append("Darkness*")
  
 
 class Tiefling_Variant(Tiefling):
@@ -102,7 +105,7 @@ class Tiefling_Variant(Tiefling):
         self.infernal = False
 
     def choices(self):
-        print("Choose a trait.")
+        print("\nChoose a trait.")
         print("[1] - Devil's Tongue\n[2] - Hellfire\n[3] - Winged\n[4] - None (default Infernal Legacy)")
         inp = str.lower(input())
         if inp == "exit":
@@ -123,20 +126,20 @@ class Tiefling_Variant(Tiefling):
 
     def check_lvl(self):
         if self.devil_tongue == True:
-            self.spells.append("Vicious Mockery*")
-            if PC.lvl >= 3 and "Charm Person*" not in self.spells:
-                self.spells.append("Charm Person*")
-            if PC.lvl >= 5:
-                self.spells.append("Enthrall*")
+            self.spells[0].append("Vicious Mockery*")
+            if PC.lvl >= 3 and "Charm Person*" not in self.spells[1]:
+                self.spells[1].append("Charm Person*")
+            if PC.lvl >= 5 and "Enthrall*" not in self.spells[2]:
+                self.spells[2].append("Enthrall*")
 
         if self.hellfire == True:
-            if PC.lvl >= 3 and "Burning Hands*" not in self.spells:
-                self.spells.append("Burning Hands*")
-            if PC.lvl >= 5 and "Darkness*" not in self.spells:
-                self.spells.append("Darkness*")
+            if PC.lvl >= 3 and "Burning Hands*" not in self.spells[1]:
+                self.spells[1].append("Burning Hands*")
+            if PC.lvl >= 5 and "Darkness*" not in self.spells[2]:
+                self.spells[2].append("Darkness*")
 
         if self.infernal == True:
-            if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells:
-                self.spells.append("Hellish Rebuke*")
-            if PC.lvl >= 5 and "Darkness*" not in self.spells:
-                self.spells.append("Darkness*")
+            if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells[1]:
+                self.spells[1].append("Hellish Rebuke*")
+            if PC.lvl >= 5 and "Darkness*" not in self.spells[2]:
+                self.spells[2].append("Darkness*")

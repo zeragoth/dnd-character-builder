@@ -3,6 +3,7 @@ from level import input_level
 from ability_scores import input_scores
 from source_books import choose_books, get_book_titles
 from choose_race import choose_race
+from spells import spellbook
 
 
 def menu():
@@ -49,7 +50,7 @@ def menu():
         print(f"Skills: {skills}")
         print(f"Armor Proficiencies: {armors} ----- Weapon Proficiencies: {weapons}")
         print(f"Tool Proficiencies: {tools} ----- Languages: {langs}")
-        print(f"Feats: {feats} ----- Spells: {spells}")
+        print(f"Feats: {feats}")
         print(f"Traits: {PC.race.traits}")
         print(f"Source Books: {get_book_titles()}")
         print('\nType "commands" to see available commands')
@@ -59,6 +60,7 @@ def menu():
             print("[ability scores] or [scores] - Change your Ability Scores")
             print("[books] - Change the available source book(s)")
             print("[race] - Change your character's race")
+            print("[spellbook] or [spells] - Shows a list of Known Spells")
             print("[exit] - Exits the program")
         elif "lvl" in inp or "level" in inp:
             input_level()
@@ -68,5 +70,7 @@ def menu():
             choose_books()
         elif "race" in inp:
             choose_race()
+        elif "spell" in inp:
+            spellbook()
         elif inp == "exit":
             quit()

@@ -1,6 +1,7 @@
 from char_values import PC, Race
 from languages import languages
 from skills import skills
+from spells import wizard_cantrips
 
 
 class Dwarf(Race):
@@ -15,13 +16,13 @@ class Dwarf(Race):
         self.subraces = []
 
     def choices(self):
-        print("Choose a tool proficiency.")
+        print("\nChoose a tool proficiency.")
         print("[1] - Smith's Tools\n[2] - Brewer's Supplies\n[3] - Mason's Tools")
         while True:
             inp = str.lower(input())
             if inp == "exit":
                 quit()
-            if "1 " in inp:
+            if "1" in inp:
                 self.tool_profs = ["Smith's Tools"]
                 return
             elif "2" in inp:
@@ -68,18 +69,20 @@ class High_Elf(Elf):
         self.weapon_profs = ["longsword","shortsword","shortbow","longbow"]
 
     def choices(self):
-        print("Choose a cantrip from the Wizard spell list.")
+        print("\nChoose a cantrip from the Wizard spell list.")
+        for i in range(len(wizard_cantrips)):
+            print(f"[{i+1}] - {wizard_cantrips[i]}")
         while True:
-            inp = input()
-            if str.lower(inp) == "exit":
+            inp = str.lower(input())
+            if inp == "exit":
                 quit()
-            else:
-                self.spells.append(f"{inp}*")
+            if inp.isdigit() and 1 <= int(inp) <= len(wizard_cantrips) and wizard_cantrips[int(inp)-1] not in self.spells[0] and wizard_cantrips[int(inp)-1] not in PC.spells[0]:
+                self.spells[0].append(wizard_cantrips[int(inp)-1])
                 break
-            #else:
-            #    print(f"{inp} is not a valid cantrip name.")
+            else:
+                print(f"{inp} is not a valid spell choice or is already known by your character.")
 
-        print("Choose a language other than Common or Elvish.")
+        print("\nChoose a language other than Common or Elvish.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:
@@ -113,10 +116,10 @@ class Drow(Elf):
         self.weapon_profs = ["rapier","shortsword","hand crossbow"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Faerie Fire*" not in self.spells:
-            self.spells.append("Faerie Fire*")
-        if PC.lvl >= 5 and "Darkness*" not in self.spells:
-            self.spells.append("Darkness*")
+        if PC.lvl >= 3 and "Faerie Fire*" not in self.spells[1]:
+            self.spells[1].append("Faerie Fire*")
+        if PC.lvl >= 5 and "Darkness*" not in self.spells[2]:
+            self.spells[2].append("Darkness*")
 
 
 class Halfling(Race):
@@ -154,7 +157,7 @@ class Human(Race):
         self.asi = [(0,1),(1,1),(2,1),(3,1),(4,1),(5,1)]
 
     def choices(self):
-        print("Choose a language other than Common.")
+        print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:
@@ -180,7 +183,7 @@ class Human_Variant(Human):
         self.asi = [["CHOICE",1],["CHOICE",1]]
 
     def choices(self):
-        print("Choose a skill proficiency.")
+        print("\nChoose a skill proficiency.")
         for i in range(len(skills)):
             print(f"[{i+1}] - {skills[i]}")
         while True:
@@ -193,7 +196,7 @@ class Human_Variant(Human):
             else:
                 print(f"{inp} is not a valid skill name or is already known by your character.")
 
-        print("Choose a feat.")
+        print("\nChoose a feat.")
         while True:
             inp = input()
             if str.lower(inp) == "exit":
@@ -204,7 +207,7 @@ class Human_Variant(Human):
             else:
                 print(f"{inp} is not a valid feat name or is already known by your character.")
 
-        print("Choose a language other than Common.")
+        print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:
@@ -227,7 +230,7 @@ class Dragonborn(Race):
         self.langs.append("Draconic")
 
     def choices(self):
-        print("Choose a draconic ancestry.")
+        print("\nChoose a draconic ancestry.")
         print("[1] - Black (Acid)\n[2] - Blue (Lightning)\n[3] - Brass (Fire)\n[4] - Bronze (Lightning)\n"
         "[5] - Copper (Acid)\n[6] - Gold (Fire)\n[7] - Green (Poison)\n[8] - Red (Fire)\n"
         "[9] - Silver (Cold)\n[10] - White (Cold)")
@@ -276,7 +279,7 @@ class Forest_Gnome(Gnome):
         self.parent = Gnome()
         self.name = "Forest Gnome"
         self.asi.append((1,1))
-        self.spells = ["Minor Illusion*"]
+        self.spells[0] = ["Minor Illusion*"]
         self.traits.append("Speak with Small Beasts")
 
 class Rock_Gnome(Gnome):
@@ -300,7 +303,7 @@ class Half_Elf(Race):
         counter = 0
         available_skills = skills.copy()
 
-        print("Choose 2 skill proficiencies.")
+        print("\nChoose 2 skill proficiencies.")
         
         while counter < 2:
             for i in range(len(available_skills)):
@@ -318,7 +321,7 @@ class Half_Elf(Race):
                 print(f"{inp} is not a valid skill name or is already known by your character.")
 
         while True:
-            print("Choose a language other than Common or Elvish.")
+            print("\nChoose a language other than Common or Elvish.")
             for i in range(len(languages)):
                 print(f"[{i+1}] - {languages[i]}")
             while True:
@@ -353,11 +356,11 @@ class Tiefling(Race):
         self.name = "Tiefling"
         self.asi = [(3,1),(5,2)]
         self.traits = ["Darkvision","Hellish Resistance"]
-        self.spells = ["Thaumaturgy*"]
+        self.spells[0] = ["Thaumaturgy*"]
         self.langs.append("Infernal")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells:
-            self.spells.append("Hellish Rebuke*")
-        if PC.lvl >= 5 and "Darkness*" not in self.spells:
-            self.spells.append("Darkness*")
+        if PC.lvl >= 3 and "Hellish Rebuke*" not in self.spells[1]:
+            self.spells[1].append("Hellish Rebuke*")
+        if PC.lvl >= 5 and "Darkness*" not in self.spells[2]:
+            self.spells[2].append("Darkness*")

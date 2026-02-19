@@ -10,7 +10,7 @@ class Chromatic_Dragonborn(Race):
         self.traits = ["Chromatic Ancestry", "Breath Weapon", "Draconic Resistance"]
 
     def choices(self):
-        print("Choose a draconic ancestry.")
+        print("\nChoose a draconic ancestry.")
         print("[1] - Black (Acid)\n[2] - Blue (Lightning)\n[3] - Green (Poison)\n[4] - Red (Fire)\n"
         "[5] - White (Cold)")
         while True:
@@ -31,7 +31,7 @@ class Chromatic_Dragonborn(Race):
                 print(f"{inp} is not a valid input.")
             break
         
-        print("Choose a language other than Common.")
+        print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:
@@ -56,7 +56,7 @@ class Gem_Dragonborn(Race):
         self.traits = ["Gem Ancestry", "Breath Weapon", "Draconic Resistance", "Psionic Mind"]
 
     def choices(self):
-        print("Choose a draconic ancestry.")
+        print("\nChoose a draconic ancestry.")
         print("[1] - Amethyst (Force)\n[2] - Crystal (Radiant)\n[3] - Emerald (Psychic)\n[4] - Sapphire (Thunder)\n"
         "[5] - Topaz (Necrotic)")
         while True:
@@ -77,7 +77,7 @@ class Gem_Dragonborn(Race):
                 print(f"{inp} is not a valid input.")
             break
 
-        print("Choose a language other than Common.")
+        print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:
@@ -102,7 +102,7 @@ class Metallic_Dragonborn(Race):
         self.traits = ["Metallic Ancestry", "Breath Weapon", "Draconic Resistance"]
 
     def choices(self):
-        print("Choose a draconic ancestry.")
+        print("\nChoose a draconic ancestry.")
         print("[1] - Brass (Fire)\n[2] - Bronze (Lightning)\n[3] - Copper (Acid)\n[4] - Gold (Fire)\n"
         "[5] - Silver (Cold)")
         while True:
@@ -123,7 +123,7 @@ class Metallic_Dragonborn(Race):
                 print(f"{inp} is not a valid input.")
             break
 
-        print("Choose a language other than Common.")
+        print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:

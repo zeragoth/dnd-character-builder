@@ -12,7 +12,7 @@ class Race:
         self.langs = ["Common"]
         self.parent = None
         self.subraces = []
-        self.spells = []
+        self.spells = [[],[],[],[],[],[],[],[],[],[]]
         self.feats = []
 
     def check_lvl(self):
@@ -41,7 +41,7 @@ class Character:
         self.tool_profs = []
         self.skill_profs = []
         self.langs = []
-        self.spells = []
+        self.spells = [[],[],[],[],[],[],[],[],[],[]]
         self.books = []
 
 

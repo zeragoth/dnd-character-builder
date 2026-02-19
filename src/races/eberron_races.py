@@ -177,7 +177,7 @@ class Mark_of_Detection(Half_Elf):
         self.name = "Half-Elf (Mark of Detection)"
         self.asi = [(4,2),("CHOICE",1)]
         self.traits.extend(["Deductive Intuition", "Spells of the Mark"])
-        self.spells.extend(["Detect Magic*", "Detect Poison and Disease*"])
+        self.spells[1].extend(["Detect Magic*", "Detect Poison and Disease*"])
 
     def choices(self):
         while True:
@@ -195,8 +195,8 @@ class Mark_of_Detection(Half_Elf):
                     print(f"{inp} is not a valid language name or is already known by your character.")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Invisibility*" not in self.spells:
-            self.spells.append("Invisibility*")
+        if PC.lvl >= 3 and "Invisibility*" not in self.spells[2]:
+            self.spells[2].append("Invisibility*")
 
 class Mark_of_Finding_A(Half_Orc):
     def __init__(self):
@@ -205,12 +205,12 @@ class Mark_of_Finding_A(Half_Orc):
         self.name = "Half-Orc (Mark of Finding)"
         self.asi = [(4,2),(2,1)]
         self.traits = ["Darkvision", "Hunter's Intuition", "Spells of the Mark"]
-        self.spells = ["Hunter's Mark*"]
+        self.spells[1] = ["Hunter's Mark*"]
         self.langs = ["Common", "Goblin"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Locate Object*" not in self.spells:
-            self.spells.append("Locate Object*")
+        if PC.lvl >= 3 and "Locate Object*" not in self.spells[2]:
+            self.spells[2].append("Locate Object*")
 
 class Mark_of_Finding_B(Human):
     def __init__(self):
@@ -219,15 +219,16 @@ class Mark_of_Finding_B(Human):
         self.name = "Human (Mark of Finding)"
         self.asi = [(4,2),(2,1)]
         self.traits = ["Darkvision", "Hunter's Intuition", "Spells of the Mark"]
-        self.spells = ["Hunter's Mark*", "Locate Object*"]
+        self.spells[1] = ["Hunter's Mark*"]
+        self.spells[2] = ["Locate Object*"]
         self.langs = ["Common", "Goblin"]
 
     def choices(self):
         pass
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Locate Object*" not in self.spells:
-            self.spells.append("Locate Object*")
+        if PC.lvl >= 3 and "Locate Object*" not in self.spells[2]:
+            self.spells[2].append("Locate Object*")
 
 class Mark_of_Handling(Human):
     def __init__(self):
@@ -236,7 +237,7 @@ class Mark_of_Handling(Human):
         self.name = "Human (Mark of Handling)"
         self.asi = [(4,2),("CHOICE",1)]
         self.traits.extend(["Wild Intuition", "The Bigger They Are", "Spells of the Mark"])
-        self.spells.extend(["Animal Friendship*", "Speak with Animals*"])
+        self.spells[1].extend(["Animal Friendship*", "Speak with Animals*"])
 
 class Mark_of_Healing(Halfling):
     def __init__(self):
@@ -245,11 +246,11 @@ class Mark_of_Healing(Halfling):
         self.name = "Halfling (Mark of Healing)"
         self.asi.append((4,1))
         self.traits.extend(["Medical Intuition", "Spells of the Mark"])
-        self.spells.append("Cure Wounds*")
+        self.spells[1].append("Cure Wounds*")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Lesser Restoration*" not in self.spells:
-            self.spells.append("Lesser Restoration*")
+        if PC.lvl >= 3 and "Lesser Restoration*" not in self.spells[2]:
+            self.spells[2].append("Lesser Restoration*")
 
 class Mark_of_Hospitality(Halfling):
     def __init__(self):
@@ -258,7 +259,8 @@ class Mark_of_Hospitality(Halfling):
         self.name = "Halfling (Mark of Hospitality)"
         self.asi.append((5,1))
         self.traits.extend(["Ever Hospitable", "Spells of the Mark"])
-        self.spells.extend(["Prestidigitation*", "Purify Food and Drink*", "Unseen Servant*"])
+        self.spells[0].append("Prestidigitation*")
+        self.spells[1].extend(["Purify Food and Drink*", "Unseen Servant*"])
 
 class Mark_of_Making(Human):
     def __init__(self):
@@ -267,7 +269,8 @@ class Mark_of_Making(Human):
         self.name = "Human (Mark of Making)"
         self.asi = [(3,2),("CHOICE",1)]
         self.traits = ["Artisan's Intuition", "Spells of the Mark"]
-        self.spells = ["Mending*", "Magic Weapon*"]
+        self.spells[0] = ["Mending*"]
+        self.spells[2] = ["Magic Weapon*"]
 
     def choices(self):
         available_tools = artisan_tools.copy()
@@ -309,7 +312,7 @@ class Mark_of_Passage(Human):
         self.asi = [(1,2),("CHOICE",1)]
         self.speed["walk"] = 35
         self.traits.extend(["Intuitive Motion", "Spells of the Mark"])
-        self.spells.append("Misty Step*")
+        self.spells[2].append("Misty Step*")
 
 class Mark_of_Scribing(Gnome):
     def __init__(self):
@@ -318,11 +321,12 @@ class Mark_of_Scribing(Gnome):
         self.name = "Gnome (Mark of Scribing)"
         self.asi.append((5,1))
         self.traits.extend(["Gifted Scribe", "Spells of the Mark"])
-        self.spells.extend(["Message*", "Comprehend Languages*"])
+        self.spells[0].append("Message*")
+        self.spells[1].append("Comprehend Languages*")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Magic Mouth*" not in self.spells:
-            self.spells.append("Magic Mouth*")
+        if PC.lvl >= 3 and "Magic Mouth*" not in self.spells[2]:
+            self.spells[2].append("Magic Mouth*")
 
 class Mark_of_Sentinel(Human):
     def __init__(self):
@@ -331,7 +335,7 @@ class Mark_of_Sentinel(Human):
         self.name = "Human (Mark of Sentinel)"
         self.asi = [(2,2),(4,1)]
         self.traits.extend(["Sentinel's Intuition", "Vigilant Guardian", "Spells of the Mark"])
-        self.spells.append("Shield*")
+        self.spells[1].append("Shield*")
 
 class Mark_of_Shadow(Elf):
     def __init__(self):
@@ -340,11 +344,11 @@ class Mark_of_Shadow(Elf):
         self.name = "Elf (Mark of Shadow)"
         self.asi.append((5,1))
         self.traits.extend(["Cunning Intuition", "Spells of the Mark"])
-        self.spells.append("Minor Illusion*")
+        self.spells[0].append("Minor Illusion*")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Invisibility*" not in self.spells:
-            self.spells.append("Invisibility*")
+        if PC.lvl >= 3 and "Invisibility*" not in self.spells[2]:
+            self.spells[2].append("Invisibility*")
 
 class Mark_of_Storm(Half_Elf):
     def __init__(self):
@@ -353,11 +357,11 @@ class Mark_of_Storm(Half_Elf):
         self.name = "Half-Elf (Mark of Storm)"
         self.asi = [(5,2),(1,1)]
         self.traits.extend(["Windwright's Intuition", "Storm's Boon", "Spells of the Mark"])
-        self.spells.append("Gust*")
+        self.spells[0].append("Gust*")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Gust of Wind*" not in self.spells:
-            self.spells.append("Gust of Wind*")
+        if PC.lvl >= 3 and "Gust of Wind*" not in self.spells[2]:
+            self.spells[2].append("Gust of Wind*")
 
 class Mark_of_Warding(Dwarf):
     def __init__(self):
@@ -366,8 +370,8 @@ class Mark_of_Warding(Dwarf):
         self.name = "Dwarf (Mark of Warding)"
         self.asi = [(4,2),(1,1)]
         self.traits.extend(["Warder's Intuition", "Spells of the Mark"])
-        self.spells.extend(["Alarm*", "Mage Armor*"])
+        self.spells[1].extend(["Alarm*", "Mage Armor*"])
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Arcane Lock*" not in self.spells:
-            self.spells.append("Arcane Lock*")
+        if PC.lvl >= 3 and "Arcane Lock*" not in self.spells[2]:
+            self.spells[2].append("Arcane Lock*")

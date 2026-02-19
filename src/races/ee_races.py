@@ -26,7 +26,7 @@ class Air_Genasi(Genasi):
         self.name = "Air Genasi"
         self.asi.append((1,1))
         self.traits = ["Unending Breath"]
-        self.spells = ["Levitate*"]
+        self.spells[2] = ["Levitate*"]
 
 class Earth_Genasi(Genasi):
     def __init__(self):
@@ -35,7 +35,7 @@ class Earth_Genasi(Genasi):
         self.name = "Earth Genasi"
         self.asi.append((0,1))
         self.traits = ["Merge with Stone"]
-        self.spells = ["Pass without Trace*"]
+        self.spells[2] = ["Pass without Trace*"]
 
 class Fire_Genasi(Genasi):
     def __init__(self):
@@ -44,11 +44,11 @@ class Fire_Genasi(Genasi):
         self.name = "Fire Genasi"
         self.asi.append((3,1))
         self.traits = ["Darkvision","Fire Resistance"]
-        self.spells = ["Produce Flame*"]
+        self.spells[0] = ["Produce Flame*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Burning Hands*" not in self.spells:
-            self.spells.append("Burning Hands*")
+        if PC.lvl >= 3 and "Burning Hands*" not in self.spells[1]:
+            self.spells[1].append("Burning Hands*")
 
 class Water_Genasi(Genasi):
     def __init__(self):
@@ -58,11 +58,11 @@ class Water_Genasi(Genasi):
         self.asi.append((4,1))
         self.traits = ["Acid Resistance","Amphibious"]
         self.speed["swim"] = 30
-        self.spells = ["Shape Water*"]
+        self.spells[0] = ["Shape Water*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Create or Destroy Water*" not in self.spells:
-            self.spells.append("Create or Destroy Water*")
+        if PC.lvl >= 3 and "Create or Destroy Water*" not in self.spells[1]:
+            self.spells[1].append("Create or Destroy Water*")
 
 
 class Goliath(Race):

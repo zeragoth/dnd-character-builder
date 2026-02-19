@@ -1,5 +1,4 @@
-from char_values import PC
-import char_values
+from char_values import PC, PCRace
 from source_books import choose_books
 
 
@@ -20,7 +19,7 @@ def choose_race():
         return
 
     while True:
-        print('Choose a race for your character.')
+        print('\nChoose a race for your character.')
         for i in range(len(available_races)):
             print(f"[{i+1}] - {available_races[i].name}")
 
@@ -32,7 +31,7 @@ def choose_race():
             if str.lower(race.name) in inp:
                 if len(race.subraces) > 0:
                     while True:
-                        print(f"Which type of {race.name}?")
+                        print(f"\nWhich type of {race.name}?")
                         for i in range(len(race.subraces)):
                             print(f"[{i+1}] - {race.subraces[i].name}")
 
@@ -42,29 +41,29 @@ def choose_race():
 
                         for sub in race.subraces:
                             if str.lower(sub.name) in inp:
-                                char_values.PCRace = sub
-                                PC.race = char_values.PCRace
-                                apply_race(char_values.PCRace)
+                                PCRace = sub
+                                PC.race = PCRace
+                                apply_race(PCRace)
                                 return
                             
                         for i in range(len(race.subraces)):
                             if str(i+1) in inp:
-                                char_values.PCRace = race.subraces[i]
-                                PC.race = char_values.PCRace
-                                apply_race(char_values.PCRace)
+                                PCRace = race.subraces[i]
+                                PC.race = PCRace
+                                apply_race(PCRace)
                                 return
                         print(f"\n{inp} is not a valid subrace name.")
                 else:
-                    char_values.PCRace = race
-                    PC.race = char_values.PCRace
-                    apply_race(char_values.PCRace)
+                    PCRace = race
+                    PC.race = PCRace
+                    apply_race(PCRace)
                     return
                 
         if inp.isdigit() and 1 <= int(inp) <= len(available_races):
             race = available_races[int(inp)-1]
             if len(race.subraces) > 0:
                 while True:
-                    print(f"Which type of {race.name}?")
+                    print(f"\nWhich type of {race.name}?")
                     for i in range(len(race.subraces)):
                         print(f"[{i+1}] - {race.subraces[i].name}")
 
@@ -74,15 +73,15 @@ def choose_race():
 
                     for i in range(len(race.subraces)):
                         if str(i+1) in inp:
-                            char_values.PCRace = race.subraces[i]
-                            PC.race = char_values.PCRace
-                            apply_race(char_values.PCRace)
+                            PCRace = race.subraces[i]
+                            PC.race = PCRace
+                            apply_race(PCRace)
                             return
                     print(f"\n{inp} is not a valid subrace name.")
             else:
-                char_values.PCRace = race
-                PC.race = char_values.PCRace
-                apply_race(char_values.PCRace)
+                PCRace = race
+                PC.race = PCRace
+                apply_race(PCRace)
                 return
         print(f"\n{inp} is not a valid race name.")
 
@@ -98,6 +97,8 @@ def apply_race_asi(race):
                 [3, "Intelligence"],[4, "Wisdom"],[5, "Charisma"]]
     PC.racial_scores = [0,0,0,0,0,0]
     
+    # Need to implement contingencies for other races who can choose ASIs
+
     if race.name == "Half-Elf":
         del score_list[5]
     
@@ -108,7 +109,7 @@ def apply_race_asi(race):
         else:
             picked = False
             while picked == False:
-                print(f"Choose an ability score to increase by {race.asi[i][1]}.")
+                print(f"\nChoose an ability score to increase by {race.asi[i][1]}.")
                 for j in range(len(score_list)):
                     print(f"[{j+1}] - {score_list[j][1]}")
 

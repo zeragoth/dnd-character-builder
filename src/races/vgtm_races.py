@@ -9,7 +9,7 @@ class Aasimar(Race):
         self.name = "Aasimar"
         self.asi = [(5,2)]
         self.traits = ["Darkvision", "Celestial Resistance", "Healing Hands"]
-        self.spells = ["Light*"]
+        self.spells[0] = ["Light*"]
         self.langs.append("Celestial")
 
 class Protector_Aasimar(Aasimar):
@@ -43,7 +43,7 @@ class Firbolg(Race):
         self.name = "Firbolg"
         self.asi = [(4,2),(0,1)]
         self.traits = ["Hidden Step", "Powerful Build", "Speech of Beast and Leaf"]
-        self.spells = ["Detect Magic*", "Disguise Self*"]
+        self.spells[1] = ["Detect Magic*", "Disguise Self*"]
         self.langs.extend(["Elvish", "Giant"])
 
 
@@ -59,7 +59,7 @@ class Kenku(Race):
         counter = 0
         available_skills = ["Acrobatics", "Deception", "Stealth", "Sleight of Hand"]
 
-        print("Choose 2 skill proficiencies.")
+        print("\nChoose 2 skill proficiencies.")
         
         while counter < 2:
             for i in range(len(available_skills)):
@@ -90,7 +90,7 @@ class Lizardfolk(Race):
         counter = 0
         available_skills = ["Animal Handling", "Nature", "Perception", "Stealth", "Survival"]
 
-        print("Choose 2 skill proficiencies.")
+        print("\nChoose 2 skill proficiencies.")
         
         while counter < 2:
             for i in range(len(available_skills)):
@@ -118,7 +118,7 @@ class Tabaxi(Race):
         self.skill_profs = ["Perception", "Stealth"]
 
     def choices(self):
-        print("Choose a language other than Common.")
+        print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
         while True:
@@ -139,14 +139,14 @@ class Triton(Race):
         self.asi = [(0,1),(2,1),(5,1)]
         self.speed["swim"] = 30
         self.traits = ["Amphibious", "Emissary of the Sea", "Guardians of the Depths"]
-        self.spells = ["Fog Cloud*"]
+        self.spells[1] = ["Fog Cloud*"]
         self.langs.append("Primordial (Aquan)")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Gust of Wind*" not in self.spells:
-            self.spells.append("Gust of Wind*")
-        if PC.lvl >= 5 and "Wall of Water*" not in self.spells:
-            self.spells.append("Wall of Water*")
+        if PC.lvl >= 3 and "Gust of Wind*" not in self.spells[2]:
+            self.spells[2].append("Gust of Wind*")
+        if PC.lvl >= 5 and "Wall of Water*" not in self.spells[3]:
+            self.spells[3].append("Wall of Water*")
 
 
 class Bugbear(Race):
@@ -182,7 +182,7 @@ class Hobgoblin(Race):
         counter = 0
         available_weapons = martial_melee_weapons + martial_ranged_weapons
 
-        print("Choose 2 weapon proficiencies.")
+        print("\nChoose 2 weapon proficiencies.")
         
         while counter < 2:
             for i in range(len(available_weapons)):
@@ -221,7 +221,7 @@ class Orc(Race):
     def choices(self):
         available_skills = ["Animal Handling", "Insight", "Intimidation", "Medicine", "Nature", "Perception","Survival"]
 
-        print("Choose a skill proficiency.")
+        print("\nChoose a skill proficiency.")
         
         for i in range(len(available_skills)):
                 if available_skills[i-1] in self.skill_profs or available_skills[i-1] in PC.skill_profs:
@@ -245,9 +245,10 @@ class Yuan_Ti_Pureblood(Race):
         self.name = "Yuan-Ti Pureblood"
         self.asi = [(5,2),(3,1)]
         self.traits = ["Darkvision", "Magic Resistance", "Poison Immunity"]
-        self.spells = ["Poison Spray*","Animal Friendship (snakes)*"]
+        self.spells[0] = ["Poison Spray*"]
+        self.spells[1] = ["Animal Friendship (snakes)*"]
         self.langs.extend(["Abyssal", "Draconic"])
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Suggestion*" not in self.spells:
-            self.spells.append("Suggestion*")
+        if PC.lvl >= 3 and "Suggestion*" not in self.spells[2]:
+            self.spells[2].append("Suggestion*")
