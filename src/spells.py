@@ -1,15 +1,17 @@
-from char_values import PC, PCRace
+from char_values import PC
 
 def spellbook():
-    if len(PC.spells[0]) == 0 and len(PC.spells[1]) == 0 and len(PCRace.spells[0]) == 0 and len(PCRace.spells[1]) == 0 and len(PCRace.spells[2]) == 0:
+    if len(PC.spells[0]) == 0 and len(PC.spells[1]) == 0 and len(PC.race.spells[0]) == 0 and len(PC.race.spells[1]) == 0 and len(PC.race.spells[2]) == 0:
         print("\nYou don't know any spells!\n\n[Enter] - return to menu")
         if input() == "exit":
             quit()
         else:
             return
+
     print("\nKnown Spells:")
     for i in range(len(PC.spells)):
-        spells = PC.spells[i] + PCRace.spells[i]
+        spells = list(set(PC.spells[i].copy() + PC.race.spells[i].copy()))
+        spells.sort()
         if len(spells) > 0:
             if i == 0:
                 print("--- Cantrips ---")

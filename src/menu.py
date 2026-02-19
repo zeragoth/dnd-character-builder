@@ -17,11 +17,6 @@ def menu():
         for i in range(len(PC.race.feats)):
             if PC.race.feats[i] not in PC.feats:
                 feats.append(PC.race.feats[i])
-        
-        spells = PC.spells.copy()
-        for i in range(len(PC.race.spells)):
-            if PC.race.spells[i] not in PC.spells:
-                spells.append(PC.race.spells[i])
 
         armors = PC.armor_profs.copy()
         for i in range(len(PC.race.armor_profs)):
