@@ -30,7 +30,9 @@ def spellbook():
         quit()
     else:
         return
-            
+    
+
+# Player's Handbook            
 
 bard_cantrips = ["Blade Ward", "Dancing Lights", "Friends", "Light", "Mage Hand", "Mending", "Message",
                  "Minor Illusion", "Prestidigitation", "True Strike", "Vicious Mockery"]
@@ -222,3 +224,257 @@ wizard_spells_8 = ["Antimagic Field", "Anitpathy/Sympathy", "Clone", "Control We
                    "Sunburst", "Telepathy"]
 wizard_spells_9 = ["Astral Projection", "Foresight", "Gate", "Imprisonment", "Meteor Swarm", "Power Word Kill",
                    "Prismatic Wall", "Shapechange", "Time Stop", "True Polymorph", "Weird", "Wish"]
+
+
+# Sword Coast Adventurer's Guide
+
+scag_sorcerer_cantrips = ["Booming Blade", "Green-Flame Blade", "Lightning Lure", "Sword Burst"]
+scag_warlock_cantrips = ["Booming Blade", "Green-Flame Blade", "Lightning Lure", "Sword Burst"]
+scag_wizard_cantrips = ["Booming Blade", "Green-Flame Blade", "Lightning Lure", "Sword Burst"]
+
+
+# Elemental Evil Player's Companion
+
+ee_artificer_cantrips = ["Create Bonfire", "Frostbite", "Magic Stone", "Thunderclap"]
+ee_artificer_spells_1 = ["Absorb Elements", "Catapult"]
+ee_artificer_spells_2 = ["Pyrotechnics", "Skywrite"]
+ee_artificer_spells_3 = ["Flame Arrows"]
+ee_artificer_spells_4 = ["Elemental Bane"]
+ee_artificer_spells_5 = ["Transmute Rock"]
+
+ee_bard_cantrips = ["Thunderclap"]
+ee_bard_spells_1 = ["Earth Tremor"]
+ee_bard_spells_2 = ["Pyrotechnics", "Skywrite", "Warding Wind"]
+
+
+ee_druid_cantrips = ["Control Flames", "Create Bonfire", "Frostbite", "Gust", "Magic Stone", "Mold Earth",
+                     "Shape Water", "Thunderclap"]
+ee_druid_spells_1 = ["Absorb Elements", "Beast Bond", "Ice Knife", "Earth Tremor"]
+ee_druid_spells_2 = ["Dust Devil", "Earthbind", "Skywrite", "Warding Wind"]
+ee_druid_spells_3 = ["Erupting Earth", "Flame Arrows", "Tidal Wave", "Wall of Water"]
+ee_druid_spells_4 = ["Elemental Bane", "Watery Sphere"]
+ee_druid_spells_5 = ["Control Winds", "Maelstrom", "Transmute Rock"]
+ee_druid_spells_6 = ["Bones of the Earth", "Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                     "Investiture of Wind", "Primordial Ward"]
+ee_druid_spells_7 = ["Whirlwind"]
+
+
+ee_ranger_spells_1 = ["Absorb Elements", "Beast Bond"]
+ee_ranger_spells_3 = ["Flame Arrows"]
+
+
+ee_sorcerer_cantrips = ["Control Flames", "Create Bonfire", "Frostbite", "Gust", "Mold Earth", "Shape Water",
+                        "Thunderclap"]
+ee_sorcerer_spells_1 = ["Catapult", "Ice Knife", "Earth Tremor"]
+ee_sorcerer_spells_2 = ["Aganazzar's Scorcher", "Dust Devil", "Earthbind", "Maximilian's Earthen Grasp",
+                        "Pyrotechnics", "Snilloc's Snowball Swarm", "Warding Wind"]
+ee_sorcerer_spells_3 = ["Erupting Earth", "Flame Arrows", "Melf's Minute Meteors", "Wall of Water"]
+ee_sorcerer_spells_4 = ["Storm Sphere", "Vitriolic Sphere", "Watery Sphere"]
+ee_sorcerer_spells_5 = ["Control Winds", "Immolation"]
+ee_sorcerer_spells_6 = ["Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                        "Investiture of Wind"]
+ee_sorcerer_spells_8 = ["Abi-Dalzim's Horrid Wilting"]
+
+
+ee_warlock_cantrips = ["Create Bonfire", "Frostbite", "Magic Stone", "Thunderclap"]
+ee_warlock_spells_2 = ["Earthbind"]
+ee_warlock_spells_4 = ["Elemental Bane"]
+ee_warlock_spells_6 = ["Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                       "Investiture of Wind"]
+
+
+ee_wizard_cantrips = ["Control Flames", "Create Bonfire", "Frostbite", "Gust", "Mold Earth", "Shape Water",
+                      "Thunderclap"]
+ee_wizard_spells_1 = ["Absorb Elements", "Catapult", "Ice Knife", "Earth Tremor"]
+ee_wizard_spells_2 = ["Aganazzar's Scorcher", "Dust Devil", "Earthbind", "Maximilian's Earthen Grasp",
+                      "Pyrotechnics", "Skywrite", "Snilloc's Snowball Swarm"]
+ee_wizard_spells_3 = ["Erupting Earth", "Flame Arrows", "Melf's Minute Meteors", "Tidal Wave", "Wall of Sand",
+                      "Wall of Water"]
+ee_wizard_spells_4 = ["Elemental Bane", "Storm Sphere", "Vitriolic Sphere", "Watery Sphere"]
+ee_wizard_spells_5 = ["Control Winds", "Immolation", "Transmute Rock"]
+ee_wizard_spells_6 = ["Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                      "Investiture of Wind"]
+ee_wizard_spells_7 = ["Whirlwind"]
+ee_wizard_spells_8 = ["Abi-Dalzim's Horrid Wilting"]
+
+
+# Xanathar's Guide to Everything
+
+xgte_artificer_cantrips = ["Create Bonfire", "Frostbite", "Magic Stone", "Thunderclap"]
+xgte_artificer_spells_1 = ["Absorb Elements", "Catapult", "Snare"]
+xgte_artificer_spells_2 = ["Pyrotechnics", "Skywrite"]
+xgte_artificer_spells_3 = ["Catnap", "Flame Arrows", "Tiny Servant"]
+xgte_artificer_spells_4 = ["Elemental Bane"]
+xgte_artificer_spells_5 = ["Skill Empowerment", "Transmute Rock"]
+
+xgte_bard_cantrips = ["Thunderclap"]
+xgte_bard_spells_1 = ["Earth Tremor"]
+xgte_bard_spells_2 = ["Pyrotechnics", "Skywrite", "Warding Wind"]
+xgte_bard_spells_3 = ["Catnap", "Enemies Abound"]
+xgte_bard_spells_4 = ["Charm Monster"]
+xgte_bard_spells_5 = ["Skill Empowerment", "Synaptic Static"]
+xgte_bard_spells_9 = ["Mass Polymorph", "Psychic Scream"]
+
+
+xgte_cleric_cantrips = ["Toll the Dead", "Word of Radiance"]
+xgte_cleric_spells_1 = ["Ceremony"]
+xgte_cleric_spells_3 = ["Life Transference"]
+xgte_cleric_spells_5 = ["Dawn", "Holy Weapon"]
+xgte_cleric_spells_7 = ["Temple of the Gods"]
+
+
+xgte_druid_cantrips = ["Control Flames", "Create Bonfire", "Frostbite", "Gust", "Infestation", "Magic Stone",
+                       "Mold Earth", "Primal Savagery", "Shape Water", "Thunderclap"]
+xgte_druid_spells_1 = ["Absorb Elements", "Beast Bond", "Earth Tremor", "Ice Knife", "Snare"]
+xgte_druid_spells_2 = ["Dust Devil", "Earthbind", "Healing Spirit", "Skywrite", "Warding Wind"]
+xgte_druid_spells_3 = ["Erupting Earth", "Flame Arrows", "Tidal Wave", "Wall of Water"]
+xgte_druid_spells_4 = ["Charm Monster", "Elemental Bane", "Guardian of Nature", "Watery Sphere"]
+xgte_druid_spells_5 = ["Control Winds", "Maelstrom", "Transmute Rock", "Wrath of Nature"]
+xgte_druid_spells_6 = ["Bones of the Earth", "Druid Grove", "Investiture of Flame", "Investiture of Ice",
+                       "Investiture of Stone", "Investiture of Wind", "Primordial Ward"]
+xgte_druid_spells_7 = ["Whirlwind"]
+
+
+xgte_paladin_spells_1 = ["Ceremony"]
+xgte_paladin_spells_4 = ["Find Greater Steed"]
+xgte_paladin_spells_5 = ["Holy Weapon"]
+
+
+xgte_ranger_spells_1 = ["Absorb Elements", "Beast Bond", "Snare", "Zephyr Strike"]
+xgte_ranger_spells_2 = ["Healing Spirit"]
+xgte_ranger_spells_3 = ["Flame Arrows"]
+xgte_ranger_spells_4 = ["Guardian of Nature"]
+xgte_ranger_spells_5 = ["Steel Wind Strike", "Wrath of Nature"]
+
+
+xgte_sorcerer_cantrips = ["Control Flames", "Create Bonfire", "Frostbite", "Gust", "Infestation", "Mold Earth",
+                          "Shape Water", "Thunderclap"]
+xgte_sorcerer_spells_1 = ["Absorb Elements", "Catapult", "Chaos Bolt", "Earth Tremor", "Ice Knife"]
+xgte_sorcerer_spells_2 = ["Aganazzar's Scorcher", "Dragon's Breath", "Dust Devil", "Earthbind",
+                          "Maximilian's Earthen Grasp", "Mind Spike", "Pyrotechnics", "Shadow Blade",
+                          "Snilloc's Snowball Swarm", "Warding Wind"]
+xgte_sorcerer_spells_3 = ["Catnap", "Enemies Abound", "Erupting Earth", "Flame Arrows", "Melf's Minute Meteors",
+                          "Thunder Step", "Tidal Wave", "Wall of Water"]
+xgte_sorcerer_spells_4 = ["Charm Monster", "Sickening Radiance", "Storm Sphere", "Vitriolic Sphere",
+                          "Watery Sphere"]
+xgte_sorcerer_spells_5 = ["Control Winds", "Enervation", "Far Step", "Immolation", "Skill Empowerment",
+                          "Synaptic Static", "Wall of Light"]
+xgte_sorcerer_spells_6 = ["Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                          "Investiture of Wind", "Mental Prison", "Scatter"]
+xgte_sorcerer_spells_7 = ["Crown of Stars", "Power Word Pain", "Whirlwind"]
+xgte_sorcerer_spells_8 = ["Abi-Dalzim's Horrid Wilting"]
+xgte_sorcerer_spells_9 = ["Mass Polymorph", "Psychic Scream"]
+
+
+xgte_warlock_cantrips = ["Create Bonfire", "Frostbite", "Infestation", "Magic Stone", "Thunderclap", "Toll the Dead"]
+xgte_warlock_spells_1 = ["Cause Fear"]
+xgte_warlock_spells_2 = ["Earthbind", "Mind Spike", "Shadow Blade"]
+xgte_warlock_spells_3 = ["Enemies Abound", "Thunder Step", "Summon Lesser Demons"]
+xgte_warlock_spells_4 = ["Charm Monster", "Elemental Bane", "Shadow of Moil", "Sickening Radiance",
+                         "Summon Greater Demon"]
+xgte_warlock_spells_5 = ["Danse Macabre", "Enervation", "Far Step", "Infernal Calling", "Negative Energy Flood",
+                         "Synaptic Static", "Wall of Light"]
+xgte_warlock_spells_6 = ["Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                         "Investiture of Wind", "Mental Prison", "Scatter", "Soul Cage"]
+xgte_warlock_spells_7 = ["Crown of Stars", "Power Word Pain"]
+xgte_warlock_spells_8 = ["Maddening Darkness"]
+xgte_warlock_spells_9 = ["Psychic Scream"]
+
+
+xgte_wizard_cantrips = ["Control Flames", "Create Bonfire", "Frostbite", "Gust", "Infestation", "Mold Earth",
+                        "Shape Water", "Thunderclap", "Toll the Dead"]
+xgte_wizard_spells_1 = ["Absorb Elements", "Catapult", "Cause Fear", "Earth Tremor", "Ice Knife", "Snare"]
+xgte_wizard_spells_2 = ["Aganazzar's Scorcher", "Dragon's Breath", "Dust Devil", "Earthbind",
+                        "Maximilian's Earthen Grasp", "Mind Spike", "Pyrotechnics", "Shadow Blade", "Skywrite",
+                        "Snilloc's Snowball Swarm", "Warding Wind"]
+xgte_wizard_spells_3 = ["Catnap", "Enemies Abound", "Erupting Earth", "Flame Arrows", "Life Transference",
+                        "Melf's Minute Meteors", "Summon Lesser Demons", "Thunder Step", "Tidal Wave",
+                        "Tiny Servant", "Wall of Sand", "Wall of Water"]
+xgte_wizard_spells_4 = ["Charm Monster", "Elemental Bane", "Sickening Radiance", "Storm Sphere",
+                        "Summon Greater Demon", "Vitriolic Sphere", "Watery Sphere"]
+xgte_wizard_spells_5 = ["Control Winds", "Danse Macabre", "Dawn", "Enervation", "Far Step", "Immolation",
+                        "Infernal Calling", "Negative Energy Flood", "Skill Empowerment", "Steel Wind Strike",
+                        "Synaptic Static", "Transmute Rock", "Wall of Light"]
+xgte_wizard_spells_6 = ["Create Homunculus", "Investiture of Flame", "Investiture of Ice", "Investiture of Stone",
+                        "Investiture of Wind", "Mental Prison", "Scatter", "Soul Cage", "Tenser's Transformation"]
+xgte_wizard_spells_7 = ["Crown of Stars", "Power Word Pain", "Whirlwind"]
+xgte_wizard_spells_8 = ["Abi-Dalzim's Horrid Wilting", "Illusory Dragon", "Maddening Darkness", "Mighty Fortress"]
+xgte_wizard_spells_9 = ["Invulnerability", "Mass Polymorph", "Psychic Scream"]
+
+
+# Tasha's Cauldron of Everything
+
+tcoe_artificer_cantrips = ["Acid Splash", "Booming Blade", "Dancing Lights", "Fire Bolt", "Green-Flame Blade",
+                           "Guidance", "Light", "Lightning Lure", "Mage Hand", "Mending", "Message", "Poison Spray",
+                           "Prestidigitation", "Ray of Frost", "Resistance", "Shocking Grasp", "Spare the Dying",
+                           "Sword Burst", "Thorn Whip"]
+tcoe_artificer_spells_1 = ["Alarm", "Cure Wounds", "Detect Magic", "Disguise Self", "Expeditious Retreat",
+                           "Faerie Fire", "False Life", "Feather Fall", "Grease", "Identify", "Jump",
+                           "Longstrider", "Purify Food and Drink", "Sanctuary", "Tasha's Caustic Brew"]
+tcoe_artificer_spells_2 = ["Aid", "Alter Self", "Arcane Lock", "Blur", "Continual Flame", "Darkvision",
+                           "Enhance Ability", "Enlarge/Reduce", "Heat Metal", "Invisibility", "Lesser Restoration",
+                           "Levitate", "Magic Mouth", "Magic Weapon", "Protection from Poison", "Rope Trick",
+                           "See Invisibility", "Spider Climb", "Web"]
+tcoe_artificer_spells_3 = ["Blink", "Create Food and Water", "Dispel Magic", "Elemental Weapon", "Fly",
+                           "Glyph of Warding", "Haste", "Intellect Fortress", "Protection from Energy",
+                           "Revivify", "Water Breathing", "Water Walk"]
+tcoe_artificer_spells_4 = ["Arcane Eye", "Fabricate", "Freedom of Movement", "Leomund's Secret Chest",
+                           "Mordenkainen's Faithful Hound", "Mordenkainen's Private Sanctum",
+                           "Otiluke's Resilient Sphere", "Stone Shape", "Stoneskin", "Summon Construct"]
+tcoe_artificer_spells_5 = ["Animate Objects", "Bigby's Hand", "Creation", "Greater Restoration", "Wall of Stone"]
+
+
+# Fizban's Treasury of Dragons
+
+ftod_artificer_spells_3 = ["Ashardalon's Stride"]
+
+
+ftod_bard_spells_2 = ["Nathair's Mischief"]
+ftod_bard_spells_4 = ["Raulothim's Psychic Lance"]
+
+
+ftod_druid_spells_5 = ["Summon Draconic Spirit"]
+ftod_druid_spells_7 = ["Draconic Transformation"]
+
+
+ftod_ranger_spells_3 = ["Ashardalon's Stride"]
+
+
+ftod_sorcerer_spells_2 = ["Nathair's Mischief", "Rime's Binding Ice"]
+ftod_sorcerer_spells_3 = ["Ashardalon's Stride"]
+ftod_sorcerer_spells_4 = ["Raulothim's Psychic Lance"]
+ftod_sorcerer_spells_5 = ["Summon Draconic Spirit"]
+ftod_sorcerer_spells_6 = ["Fizban's Platinum Shield"]
+ftod_sorcerer_spells_7 = ["Draconic Transformation"]
+
+
+ftod_warlock_spells_4 = ["Raulothim's Psychic Lance"]
+
+
+ftod_wizard_spells_2 = ["Nathair's Mischief", "Rime's Binding Ice"]
+ftod_wizard_spells_3 = ["Ashardalon's Stride"]
+ftod_wizard_spells_4 = ["Raulothim's Psychic Lance"]
+ftod_wizard_spells_5 = ["Summon Draconic Spirit"]
+ftod_wizard_spells_6 = ["Fizban's Platinum Shield"]
+ftod_wizard_spells_7 = ["Draconic Transformation"]
+
+
+# Eberron: Rising from the Last War
+
+eberron_artificer_cantrips = ["Acid Splash", "Dancing Lights", "Fire Bolt", "Guidance", "Light", "Mage Hand",
+                           "Mending", "Message", "Poison Spray", "Prestidigitation", "Ray of Frost", "Resistance",
+                           "Shocking Grasp", "Spare the Dying", "Thorn Whip"]
+eberron_artificer_spells_1 = ["Alarm", "Cure Wounds", "Detect Magic", "Disguise Self", "Expeditious Retreat",
+                           "Faerie Fire", "False Life", "Feather Fall", "Grease", "Identify", "Jump",
+                           "Longstrider", "Purify Food and Drink", "Sanctuary"]
+eberron_artificer_spells_2 = ["Aid", "Alter Self", "Arcane Lock", "Blur", "Continual Flame", "Darkvision",
+                           "Enhance Ability", "Enlarge/Reduce", "Heat Metal", "Invisibility", "Lesser Restoration",
+                           "Levitate", "Magic Mouth", "Magic Weapon", "Protection from Poison", "Rope Trick",
+                           "See Invisibility", "Spider Climb", "Web"]
+eberron_artificer_spells_3 = ["Blink", "Create Food and Water", "Dispel Magic", "Elemental Weapon", "Fly",
+                           "Glyph of Warding", "Haste", "Protection from Energy", "Revivify", "Water Breathing",
+                           "Water Walk"]
+eberron_artificer_spells_4 = ["Arcane Eye", "Fabricate", "Freedom of Movement", "Leomund's Secret Chest",
+                           "Mordenkainen's Faithful Hound", "Mordenkainen's Private Sanctum",
+                           "Otiluke's Resilient Sphere", "Stone Shape", "Stoneskin"]
+eberron_artificer_spells_5 = ["Animate Objects", "Bigby's Hand", "Creation", "Greater Restoration", "Wall of Stone"]
