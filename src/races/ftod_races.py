@@ -31,6 +31,8 @@ class Chromatic_Dragonborn(Race):
                 print(f"{inp} is not a valid input.")
             break
         
+        self.langs = ["Common"]
+
         print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
@@ -77,6 +79,8 @@ class Gem_Dragonborn(Race):
                 print(f"{inp} is not a valid input.")
             break
 
+        self.langs = ["Common"]
+
         print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
@@ -122,6 +126,8 @@ class Metallic_Dragonborn(Race):
             else:
                 print(f"{inp} is not a valid input.")
             break
+
+        self.langs = ["Common"]
 
         print("\nChoose a language other than Common.")
         for i in range(len(languages)):

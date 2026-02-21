@@ -58,6 +58,7 @@ class Kenku(Race):
     def choices(self):
         counter = 0
         available_skills = ["Acrobatics", "Deception", "Stealth", "Sleight of Hand"]
+        self.skill_profs = []
 
         print("\nChoose 2 skill proficiencies.")
         
@@ -89,6 +90,7 @@ class Lizardfolk(Race):
     def choices(self):
         counter = 0
         available_skills = ["Animal Handling", "Nature", "Perception", "Stealth", "Survival"]
+        self.skill_profs = []
 
         print("\nChoose 2 skill proficiencies.")
         
@@ -118,6 +120,8 @@ class Tabaxi(Race):
         self.skill_profs = ["Perception", "Stealth"]
 
     def choices(self):
+        self.langs = ["Common"]
+
         print("\nChoose a language other than Common.")
         for i in range(len(languages)):
             print(f"[{i+1}] - {languages[i]}")
@@ -143,10 +147,10 @@ class Triton(Race):
         self.langs.append("Primordial (Aquan)")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Gust of Wind*" not in self.spells[2]:
-            self.spells[2].append("Gust of Wind*")
-        if PC.lvl >= 5 and "Wall of Water*" not in self.spells[3]:
-            self.spells[3].append("Wall of Water*")
+        if PC.lvl >= 3:
+            self.spells[2] = ["Gust of Wind*"]
+        if PC.lvl >= 5:
+            self.spells[3] = ["Wall of Water*"]
 
 
 class Bugbear(Race):
@@ -181,6 +185,7 @@ class Hobgoblin(Race):
     def choices(self):
         counter = 0
         available_weapons = martial_melee_weapons + martial_ranged_weapons
+        self.weapon_profs = []
 
         print("\nChoose 2 weapon proficiencies.")
         
@@ -220,6 +225,7 @@ class Orc(Race):
 
     def choices(self):
         available_skills = ["Animal Handling", "Insight", "Intimidation", "Medicine", "Nature", "Perception","Survival"]
+        self.skill_profs = []
 
         print("\nChoose a skill proficiency.")
         
@@ -250,5 +256,5 @@ class Yuan_Ti_Pureblood(Race):
         self.langs.extend(["Abyssal", "Draconic"])
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Suggestion*" not in self.spells[2]:
-            self.spells[2].append("Suggestion*")
+        if PC.lvl >= 3:
+            self.spells[2] = ["Suggestion*"]

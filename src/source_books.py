@@ -27,6 +27,7 @@ from races.eberron_races import (Changeling, Kalashtar, Shifter, Warforged,
                                 Mark_of_Scribing, Mark_of_Sentinel, Mark_of_Shadow, Mark_of_Storm,
                                 Mark_of_Warding)
 
+from spells import spells, phb_spells, ee_spells, xgte_spells, tcoe_spells, ftod_spells, eberron_spells, strix_spells, wilde_spells
 from jobs import jobs, Artificer
 from char_values import PC
 from weapons import martial_melee_weapons
@@ -60,6 +61,7 @@ def choose_books():
             apply_subraces(PC.books)
             for book in PC.books:
                 book.apply_misc()
+                book.create_spell_list()
             return
 
 def get_book_titles():
@@ -76,6 +78,39 @@ def apply_subraces(books):
                     if subrace.parent.name == race.name:
                         if not any(s.name == subrace.name for s in race.subraces):
                             race.subraces.append(subrace)
+
+#    def create_spell_list():
+#        books = PC.books
+#        
+#        if PHB in books:
+#            for i in range(len(phb_spells)):
+#                if len(phb_spells[i]) > 0:
+#                    for j in range(len(phb_spells[i])):
+#                        spells[i][j].extend(phb_spells[i][j])
+#        
+#        if SCAG in books:
+#            pass
+#
+#        if EE in books:
+#            pass
+#
+#        if XGtE in books:
+#            pass
+#
+#        if TCoE in books:
+#            pass
+#        
+#        if FToD in books:
+#            pass
+#
+#        if Eberron in books:
+#            pass
+#
+#        if Strixhaven in books:
+#            pass
+#        
+#        if Wildemount in books:
+#            pass
 
 
 
@@ -96,6 +131,9 @@ class Source_Book:
     def remove_misc(self):
         pass
 
+    def create_spell_list(self):
+        pass
+
 class PHB(Source_Book):
     def __init__(self):
         super().__init__()
@@ -105,6 +143,12 @@ class PHB(Source_Book):
         self.subraces = [Hill_Dwarf(), Mountain_Dwarf(), High_Elf(), Wood_Elf(), Drow(),
                          Lightfoot_Halfling(), Stout_Halfling(), Default_Human(), Default_Half_Elf(), Forest_Gnome(), Rock_Gnome()]
         self.jobs = jobs
+        
+    def create_spell_list(self):
+        for i in range(len(phb_spells)):
+            if len(phb_spells[i]) > 0:
+                for j in range(len(phb_spells[i])):
+                    spells[i][j].extend(phb_spells[i][j])
 
 class SCAG(Source_Book):
     def __init__(self):

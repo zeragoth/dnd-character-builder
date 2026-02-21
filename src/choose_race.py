@@ -1,4 +1,4 @@
-from char_values import PC, PCRace
+from char_values import PC, PCRace, Race
 from source_books import choose_books
 
 
@@ -17,6 +17,8 @@ def choose_race():
                 available_races.append(race)
     if len(available_races) <= 0:
         return
+
+    PC.race = Race()
 
     while True:
         print('\nChoose a race for your character.')

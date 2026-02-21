@@ -19,10 +19,10 @@ class Baalzebul_Tiefling(Tiefling):
         self.spells[0] = ["Thaumaturgy*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Ray of Sickness*" not in self.spells[1]:
-            self.spells[1].append("Ray of Sickness*")
-        if PC.lvl >= 5 and "Crown of Madness*" not in self.spells[2]:
-            self.spells[2].append("Crown of Madness*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Ray of Sickness*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Crown of Madness*"]
 
 class Dispater_Tiefling(Tiefling):
     def __init__(self):
@@ -33,10 +33,10 @@ class Dispater_Tiefling(Tiefling):
         self.spells[0] = ["Thaumaturgy*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Disguise Self*" not in self.spells[1]:
-            self.spells[1].append("Disguise Self*")
-        if PC.lvl >= 5 and "Detect Thoughts*" not in self.spells[2]:
-            self.spells[2].append("Detect Thoughts*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Disguise Self*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Detect Thoughts*"]
 
 class Fierna_Tiefling(Tiefling):
     def __init__(self):
@@ -47,10 +47,10 @@ class Fierna_Tiefling(Tiefling):
         self.spells[0] = ["Friends*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Charm Person*" not in self.spells[1]:
-            self.spells[1].append("Charm Person*")
-        if PC.lvl >= 5 and "Suggestion*" not in self.spells[2]:
-            self.spells[2].append("Suggestion*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Charm Person*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Suggestion*"]
 
 class Glasya_Tiefling(Tiefling):
     def __init__(self):
@@ -61,10 +61,10 @@ class Glasya_Tiefling(Tiefling):
         self.spells[0] = ["Minor Illusion*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Disguise Self*" not in self.spells[1]:
-            self.spells[1].append("Disguise Self*")
-        if PC.lvl >= 5 and "Invisibility*" not in self.spells[2]:
-            self.spells[2].append("Invisibility*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Disguise Self*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Invisibility*"]
 
 class Levistus_Tiefling(Tiefling):
     def __init__(self):
@@ -75,10 +75,10 @@ class Levistus_Tiefling(Tiefling):
         self.spells[0] = ["Ray of Frost*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Armor of Agathys*" not in self.spells[1]:
-            self.spells[1].append("Armor of Agathys*")
-        if PC.lvl >= 5 and "Darkness*" not in self.spells[2]:
-            self.spells[2].append("Darkness*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Armor of Agathys*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Darkness*"]
 
 class Mammon_Tiefling(Tiefling):
     def __init__(self):
@@ -88,10 +88,10 @@ class Mammon_Tiefling(Tiefling):
         self.spells[0] = ["Mage Hand*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Tenser's Floating Disk*" not in self.spells[1]:
-            self.spells[1].append("Tenser's Floating Disk*")
-        if PC.lvl >= 5 and "Arcane Lock*" not in self.spells[1]:
-            self.spells[1].append("Arcane Lock*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Tenser's Floating Disk*"]
+        if PC.lvl >= 5:
+            self.spells[1] = ["Arcane Lock*", "Tenser's Floating Disk*"]
 
 class Mephistopheles_Tiefling(Tiefling):
     def __init__(self):
@@ -101,10 +101,10 @@ class Mephistopheles_Tiefling(Tiefling):
         self.spells[0] = ["Mage Hand*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Burning Hands*" not in self.spells[1]:
-            self.spells[1].append("Burning Hands*")
-        if PC.lvl >= 5 and "Flame Blade*" not in self.spells[2]:
-            self.spells[2].append("Flame Blade*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Burning Hands*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Flame Blade*"]
 
 class Zariel_Tiefling(Tiefling):
     def __init__(self):
@@ -115,10 +115,10 @@ class Zariel_Tiefling(Tiefling):
         self.spells[0] = ["Thaumaturgy*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Searing Smite*" not in self.spells[1]:
-            self.spells[1].append("Searing Smite*")
-        if PC.lvl >= 5 and "Branding Smite*" not in self.spells[2]:
-            self.spells[2].append("Branding Smite*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Searing Smite*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Branding Smite*"]
 
 
 class Eladrin(Elf):
@@ -168,6 +168,8 @@ class Githyanki(Gith):
 
     def choices(self):
         chosen = False
+        self.langs = ["Common", "Gith"]
+
         while not chosen:
             print("\nChoose a language other than Common or Gith.")
             for i in range(len(languages)):
@@ -181,6 +183,8 @@ class Githyanki(Gith):
                     chosen = True
                 else:
                     print(f"{inp} is not a valid language name or is already known by your character.")
+
+        self.tool_profs = []
 
         while True:
             print("\nChoose a tool or skill proficiency.")
@@ -203,10 +207,10 @@ class Githyanki(Gith):
                     print(f"{inp} is not a valid tool/skill name or is already known by your character.")
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Jump*" not in self.spells[1]:
-            self.spells[1].append("Jump*")
-        if PC.lvl >= 5 and "Misty Step*" not in self.spells[2]:
-            self.spells[2].append("Misty Step*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Jump*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Misty Step*"]
 
 class Githzerai(Gith):
     def __init__(self):
@@ -218,7 +222,7 @@ class Githzerai(Gith):
         self.spells[0] = ["Mage Hand*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Shield*" not in self.spells[1]:
-            self.spells[1].append("Shield*")
-        if PC.lvl >= 5 and "Detect Thoughts*" not in self.spells[2]:
-            self.spells[2].append("Detect Thoughts*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Shield*"]
+        if PC.lvl >= 5:
+            self.spells[2] = ["Detect Thoughts*"]

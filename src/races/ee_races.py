@@ -47,8 +47,8 @@ class Fire_Genasi(Genasi):
         self.spells[0] = ["Produce Flame*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Burning Hands*" not in self.spells[1]:
-            self.spells[1].append("Burning Hands*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Burning Hands*"]
 
 class Water_Genasi(Genasi):
     def __init__(self):
@@ -61,8 +61,8 @@ class Water_Genasi(Genasi):
         self.spells[0] = ["Shape Water*"]
 
     def check_lvl(self):
-        if PC.lvl >= 3 and "Create or Destroy Water*" not in self.spells[1]:
-            self.spells[1].append("Create or Destroy Water*")
+        if PC.lvl >= 3:
+            self.spells[1] = ["Create or Destroy Water*"]
 
 
 class Goliath(Race):
