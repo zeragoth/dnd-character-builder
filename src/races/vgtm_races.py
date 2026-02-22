@@ -75,7 +75,7 @@ class Kenku(Race):
                 self.skill_profs.append(available_skills[int(inp)-1])
                 counter += 1
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
 
 class Lizardfolk(Race):
@@ -107,7 +107,7 @@ class Lizardfolk(Race):
                 self.skill_profs.append(available_skills[int(inp)-1])
                 counter += 1
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
 
 class Tabaxi(Race):
@@ -242,7 +242,7 @@ class Orc(Race):
                 self.skill_profs.append(available_skills[int(inp)-1])
                 return
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
 
 class Yuan_Ti_Pureblood(Race):

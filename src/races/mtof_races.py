@@ -204,7 +204,7 @@ class Githyanki(Gith):
                         self.skill_profs.append(skills[int(inp)-len(tools)-1])
                     return
                 else:
-                    print(f"{inp} is not a valid tool/skill name or is already known by your character.")
+                    print(f"{inp} is not a valid tool/skill name or your character is already proficient.")
 
     def check_lvl(self):
         if PC.lvl >= 3:

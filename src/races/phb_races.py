@@ -24,17 +24,17 @@ class Dwarf(Race):
             inp = str.lower(input())
             if inp == "exit":
                 quit()
-            if "1" in inp:
+            if "1" in inp and "Smith's Tools" not in PC.tool_profs:
                 self.tool_profs = ["Smith's Tools"]
                 return
-            elif "2" in inp:
+            elif "2" in inp and "Brewer's Supplies" not in PC.tool_profs:
                 self.tool_profs = ["Brewer's Supplies"]
                 return
-            elif "3" in inp:
+            elif "3" in inp and "Mason's Tools" not in PC.tool_profs:
                 self.tool_profs = ["Mason's Tools"]
                 return
             else:
-                print(f"{inp} is not a valid tool proficiency name.")
+                print(f"{inp} is not a valid tool proficiency name or your character is already proficient.")
 
 class Hill_Dwarf(Dwarf):
     def __init__(self):
@@ -204,7 +204,7 @@ class Human_Variant(Human):
                 self.skill_profs.append(skills[int(inp)-1])
                 break
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
         self.feats = []
 
@@ -217,7 +217,7 @@ class Human_Variant(Human):
                 self.feats.append(inp)
                 break
             else:
-                print(f"{inp} is not a valid feat name or is already known by your character.")
+                print(f"{inp} is not a valid feat name or your character already has it.")
 
         self.langs = ["Common"]
 
@@ -333,7 +333,7 @@ class Half_Elf(Race):
                 self.skill_profs.append(available_skills[int(inp)-1])
                 counter += 1
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
         self.langs = ["Common", "Elvish"]
 

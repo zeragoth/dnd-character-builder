@@ -10,8 +10,8 @@ def input_level():
         inp = int(inp)
         if inp >= 1 and inp <= 20:
             PC.lvl = inp
-            PCRace.check_lvl()
             print(f"Your character is level {PC.lvl}.")
+            PCRace.check_lvl()
             return
         else:
             print("Please enter a number between 1 and 20.")

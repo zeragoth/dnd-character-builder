@@ -111,22 +111,25 @@ class Tiefling_Variant(Tiefling):
 
         print("\nChoose a trait.")
         print("[1] - Devil's Tongue\n[2] - Hellfire\n[3] - Winged\n[4] - None (default Infernal Legacy)")
-        inp = str.lower(input())
-        if inp == "exit":
-            quit()
-        elif "1" in inp:
-            self.devil_tongue = True
-        elif "2" in inp:
-            self.hellfire = True
-        elif "3" in inp:
-            self.speed["fly"] = 30
-            self.winged = True
-        elif "4" in inp:
-            self.infernal = True
-        else:
-            print(f"{inp} is not a valid input.")
-            self.choices()
-        return
+        while True:
+            inp = str.lower(input())
+            if inp == "exit":
+                quit()
+            elif "1" in inp:
+                self.devil_tongue = True
+                return
+            elif "2" in inp:
+                self.hellfire = True
+                return
+            elif "3" in inp:
+                self.speed["fly"] = 30
+                self.winged = True
+                return
+            elif "4" in inp:
+                self.infernal = True
+                return
+            else:
+                print(f"{inp} is not a valid input.")
 
     def check_lvl(self):
 

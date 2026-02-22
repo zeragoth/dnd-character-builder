@@ -32,7 +32,7 @@ class Changeling(Race):
                 self.skill_profs.append(available_skills[int(inp)-1])
                 counter += 1
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
         counter = 0
         self.langs = ["Common"]
@@ -144,7 +144,7 @@ class Warforged(Race):
                 self.skill_profs.append(available_skills[int(inp)-1])
                 break
             else:
-                print(f"{inp} is not a valid skill name or is already known by your character.")
+                print(f"{inp} is not a valid skill name or your character is already proficient.")
 
         available_tools = tools.copy()
         self.tool_profs = []
@@ -163,7 +163,7 @@ class Warforged(Race):
                 self.tool_profs.append(available_tools[int(inp)-1])
                 break
             else:
-                print(f"{inp} is not a valid tool name or is already known by your character.")
+                print(f"{inp} is not a valid tool name or your character is already proficient.")
 
         self.langs = ["Common"]
 
@@ -301,7 +301,7 @@ class Mark_of_Making(Human):
                 self.tool_profs.append(available_tools[int(inp)-1])
                 break
             else:
-                print(f"{inp} is not a valid tool name or is already known by your character.")
+                print(f"{inp} is not a valid tool name or your character is already proficient.")
 
         self.langs = ["Common"]
 

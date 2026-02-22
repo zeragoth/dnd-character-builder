@@ -103,6 +103,8 @@ def apply_race_asi(race):
 
     if race.name == "Half-Elf":
         del score_list[5]
+    if race.name == "Simic Hybrid":
+        del score_list[2]
     
     for i in range(len(race.asi)):
         if race.asi[i][0] != "CHOICE":
