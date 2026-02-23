@@ -144,7 +144,7 @@ class Simic(Race):
 class Vedalken(Race):
     def __init__(self):
         super().__init__()
-        self.name - "Vedalken"
+        self.name = "Vedalken"
         self.asi = [(3,2),(4,1)]
         self.traits = ["Vedalken Dispassion", "Tireless Precision", "Partially Amphibious"]
 

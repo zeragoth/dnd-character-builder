@@ -1,4 +1,4 @@
-from char_values import PC, PCRace
+from char_values import PC, PCRace, PCJob
 
 
 def input_level():
@@ -12,6 +12,7 @@ def input_level():
             PC.lvl = inp
             print(f"Your character is level {PC.lvl}.")
             PCRace.check_lvl()
+            PCJob.check_lvl()
             return
         else:
             print("Please enter a number between 1 and 20.")

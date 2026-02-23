@@ -1,40 +1,43 @@
-from races.phb_races import (Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half_Elf,
-                             Half_Orc, Tiefling,
-                            Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling,
-                            Stout_Halfling, Human_Variant, Default_Human, Default_Half_Elf, Forest_Gnome,
-                            Rock_Gnome)
+from races.phb_races import (Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
+                             Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling,
+                             Stout_Halfling, Human_Variant, Default_Human, Default_Half_Elf, Forest_Gnome,
+                             Rock_Gnome)
 
 from races.scag_races import Duergar, Ghostwise_Halfling, Half_Elf_Variant, Svirfneblin, Tiefling_Variant
 
 from races.ee_races import (Aarakocra, Genasi, Goliath,
                             Air_Genasi, Earth_Genasi, Fire_Genasi, Water_Genasi)
 
-from races.vgtm_races import (Aasimar, Firbolg, Kenku, Lizardfolk, Tabaxi, Triton, Bugbear, Goblin,
-                              Hobgoblin, Kobold, Orc, Yuan_Ti_Pureblood,
+from races.vgtm_races import (Aasimar, Firbolg, Kenku, Lizardfolk, Tabaxi, Triton, Bugbear, Goblin, Hobgoblin,
+                              Kobold, Orc, Yuan_Ti_Pureblood,
                               Protector_Aasimar, Scourge_Aasimar, Fallen_Aasimar)
 
 from races.mtof_races import (Gith,
-                            Asmodeus_Tiefling, Baalzebul_Tiefling, Dispater_Tiefling, Fierna_Tiefling,
-                            Glasya_Tiefling, Levistus_Tiefling, Mammon_Tiefling, Mephistopheles_Tiefling,
-                            Zariel_Tiefling, Eladrin, Sea_Elf, Shadar_Kai, Githyanki, Githzerai)
+                              Asmodeus_Tiefling, Baalzebul_Tiefling, Dispater_Tiefling, Fierna_Tiefling,
+                              Glasya_Tiefling, Levistus_Tiefling, Mammon_Tiefling, Mephistopheles_Tiefling,
+                              Zariel_Tiefling, Eladrin, Sea_Elf, Shadar_Kai, Githyanki, Githzerai)
 
 from races.ftod_races import (Chromatic_Dragonborn, Gem_Dragonborn, Metallic_Dragonborn)
 
 from races.eberron_races import (Changeling, Kalashtar, Shifter, Warforged,
-                                Beasthide_Shifter, Longtooth_Shifter, Swiftstride_Shifter, Wildhunt_Shifter,
-                                Mark_of_Detection, Mark_of_Finding_A, Mark_of_Finding_B, Mark_of_Handling,
-                                Mark_of_Healing, Mark_of_Hospitality, Mark_of_Making, Mark_of_Passage,
-                                Mark_of_Scribing, Mark_of_Sentinel, Mark_of_Shadow, Mark_of_Storm,
-                                Mark_of_Warding)
+                                 Beasthide_Shifter, Longtooth_Shifter, Swiftstride_Shifter, Wildhunt_Shifter,
+                                 Mark_of_Detection, Mark_of_Finding_A, Mark_of_Finding_B, Mark_of_Handling,
+                                 Mark_of_Healing, Mark_of_Hospitality, Mark_of_Making, Mark_of_Passage,
+                                 Mark_of_Scribing, Mark_of_Sentinel, Mark_of_Shadow, Mark_of_Storm,
+                                 Mark_of_Warding)
 
-from races.ravnica_races import Centaur, Loxodon, Minotaur, Simic, Vedalken
+from races.ravnica_races import (Centaur, Loxodon, Minotaur, Simic, Vedalken)
 
-from races.theros_races import Leonin, Satyr
+from races.theros_races import (Leonin, Satyr)
 
-from races.witchlight_races import Fairy, Harengon
+from races.witchlight_races import (Fairy, Harengon)
+
+from jobs.phb_jobs import (jobs, Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer,
+                           Warlock, Wizard)
+
+from jobs.tcoe_jobs import Artificer
 
 from spells import spells, phb_spells,scag_spells, ee_spells, xgte_spells, tcoe_spells, ftod_spells, eberron_spells, strix_spells, wilde_spells
-from jobs import jobs, Artificer
 from char_values import PC
 from weapons import martial_melee_weapons
 from languages import languages

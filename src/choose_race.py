@@ -156,3 +156,7 @@ def apply_race_asi(race):
                     picked = True
                 else:
                     print(f"{inp} is not a valid choice.")
+
+    PC.update_modifiers()
+    PC.job.check_lvl()
+    return
