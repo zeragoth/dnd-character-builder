@@ -1,3 +1,6 @@
+# Do not import files
+# Contains default/base Race. Job, and Character classes.
+
 class Race:
     def __init__(self):
         self.name = "race"

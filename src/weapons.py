@@ -1,3 +1,6 @@
+# Master lists of tool options.
+# Should not import any files.
+
 simple_melee_weapons = ["club","dagger","greatclub","handaxe","javelin",
                         "light hammer","mace","quarterstaff","sickle","spear"]
 

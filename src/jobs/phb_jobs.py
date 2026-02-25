@@ -1,3 +1,7 @@
+# Contains the class for every job in the Player's Handbook.
+# A job's class handles choices that need to be made when selected,
+# and features that are added when leveling up.
+
 from char_values import Job, PC
 
 

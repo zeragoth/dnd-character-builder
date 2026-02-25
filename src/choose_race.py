@@ -1,3 +1,9 @@
+# The function that is run when the user inputs "race" in the menu.
+# Checks all the race/subrace options available in selected source books
+# (If no source books are selected, calls source_books.choose_books()),
+# and prompts the user to select a race/subrace from available options.
+# The choices() functions of the selected race (if any) are called, and all racial traits are then applied.
+
 from char_values import PC, PCRace, Race
 from source_books import choose_books
 

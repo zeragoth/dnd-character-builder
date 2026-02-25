@@ -1,3 +1,7 @@
+# Contains the main menu UI.
+# This is where the user is shown most character stats/traits,
+# and can enter commands to change name, race, job, etc.
+
 from char_values import PC
 from level import input_level
 from ability_scores import input_scores

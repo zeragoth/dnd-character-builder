@@ -1,3 +1,8 @@
+# Contains class spell lists from every source book,
+# as well as combined lists of the spells from every source book selected by the user via source_books.choose_books().
+# This generally shouldn't be tampered with, unless adding a new source book,
+# or undertaking the monstrous task of converting all spells from strings into classes.
+
 from char_values import PC
 
 

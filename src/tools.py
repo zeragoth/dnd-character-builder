@@ -1,3 +1,6 @@
+# Master lists of tool options.
+# Should not import any files.
+
 artisan_tools = ["Alchemist's Supplies", "Brewer's Supplies", "Calligrapher's Supplies",
                  "Carpenter's Tools", "Cartographer's Tools", "Cobbler's Tools", "Cook's Utensils",
                  "Glassblower's Tools", "Jeweler's Tools", "Leatherworker's Tools", "Mason's Tools",

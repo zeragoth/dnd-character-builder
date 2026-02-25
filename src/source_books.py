@@ -1,3 +1,9 @@
+# Contains function that is called whenever "book" is inputted by the user,
+# as well as all source book classes, including the default.
+# Source books hold lists of races, subraces, jobs, and other miscellaneous additions from that book
+# (such as bonus languages or weapons),
+# as well as functions to add said values to relevant lists when the book is chosen by the user.
+
 from races.phb_races import (Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half_Elf, Half_Orc, Tiefling,
                              Hill_Dwarf, Mountain_Dwarf, High_Elf, Wood_Elf, Drow, Lightfoot_Halfling,
                              Stout_Halfling, Human_Variant, Default_Human, Default_Half_Elf, Forest_Gnome,
@@ -287,7 +293,7 @@ class Ravnica(Source_Book):
     def remove_misc(self):
         if "Loxodon" in languages:
             languages.remove("Loxodon")
-        if "Minotaur" in languages:
+        if "Minotaur" in languages and Theros not in PC.books:
             languages.remove("Minotaur")
         if "Vedalken" in languages:
             languages.remove("Vedalken")
@@ -307,7 +313,7 @@ class Theros(Source_Book):
     def remove_misc(self):
         if "Leonin" in languages:
             languages.remove("Leonin")
-        if "Minotaur" in languages:
+        if "Minotaur" in languages and Ravnica not in PC.books:
             languages.remove("Minotaur")
 
 class Strixhaven(Source_Book):

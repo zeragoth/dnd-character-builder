@@ -1,3 +1,6 @@
+# Contains function that is called whenever "level" is inputted by the user.
+# Function should set the PCs level, and then update all values affected by level.
+
 from char_values import PC, PCRace, PCJob
 
 

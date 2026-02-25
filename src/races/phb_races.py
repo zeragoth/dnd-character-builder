@@ -1,3 +1,8 @@
+# Contains the class for every race in the Player's Handbook.
+# A race usually has choices that need to be made when selected,
+# and/or features that are added when leveling up.
+# These are also handled by the race's class.
+
 from char_values import PC, Race
 from languages import languages
 from skills import skills

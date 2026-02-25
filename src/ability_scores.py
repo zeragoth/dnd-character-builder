@@ -1,3 +1,9 @@
+# Contains the function that is called when the user inputs "score" in the main menu.
+# Allows the user to either input their own ability scores,
+# or choose from a number of methods to randomly determine ability scores.
+
+# WIP, needs option to roll for scores, then choose where to "place" the rolled scores.
+
 import random
 
 from char_values import PC
